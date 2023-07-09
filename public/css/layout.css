@@ -1,0 +1,216 @@
+.Header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: 20px 0;
+    z-index: 1;
+}
+
+/* Sticky styles..................... */
+.Header.is-sticky {
+    position: fixed;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    backdrop-filter: blur(10px);
+    animation: slideDown 0.35s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.Header-nav {
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Header-container_logo {
+    display: flex;
+    align-items: center;
+}
+
+.Header-ul {
+    margin: 0;
+    padding: 0;
+}
+
+.Header-li {
+    display: inline-block;
+    list-style: none;
+    margin-left: 20px;
+}
+
+.Header-a::after,
+.Header-a::before,
+.Header-a:hover,
+.Header-a {
+    color: #fff;
+    font-weight: 600;
+}
+
+.Avatar {
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.Avatar:hover {
+    color: #fff;
+}
+
+.Avatar-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.Avatar-span {
+    margin-left: 10px;
+}
+
+.Dropdown {
+    position: relative;
+    max-width: 100%;
+    z-index: 200;
+}
+
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dropdown-checkbox:checked+label,
+.dropdown-checkbox:not(:checked)+label {
+    position: relative;
+    font-weight: 500;
+    transition: all 200ms linear;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.dropdown-checkbox:checked+label:before,
+.dropdown-checkbox:not(:checked)+label:before {
+    position: fixed;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    cursor: auto;
+    pointer-events: none;
+}
+
+.dropdown-checkbox:checked+label:before {
+    pointer-events: auto;
+}
+
+.dropdown-checkbox:not(:checked)+label .uil {
+    font-size: 24px;
+    margin-left: 10px;
+    transition: transform 200ms linear;
+}
+
+.dropdown-checkbox:checked+label .uil {
+    transform: rotate(180deg);
+    font-size: 24px;
+    margin-left: 10px;
+    transition: transform 200ms linear;
+}
+
+.Dropdown-ul {
+    position: absolute;
+    padding: 5px;
+    background-color: #fff;
+    top: 70px;
+    left: -40px;
+    min-width: 220px;
+    width: 100%;
+    border-radius: 4px;
+    display: block;
+    box-shadow: 0 14px 35px 0 rgba(9, 9, 12, 0.4);
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: all 200ms linear;
+    list-style: none;
+}
+
+.dropdown-checkbox:checked~.Dropdown-ul {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.Dropdown-ul:before {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    content: '';
+    display: block;
+    z-index: 1;
+}
+
+.Dropdown-li {
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.Dropdown-li:hover {
+    background: rgb(222, 222, 223);
+}
+
+.Dropdown-a {
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.Dropdown-ul:after {
+    position: absolute;
+    top: -7px;
+    left: 50px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #fff;
+    content: '';
+    display: block;
+    z-index: 2;
+    transition: all 200ms linear;
+}
+
+.Dropdown-i {
+    margin-right: 5px;
+    font-size: 18px;
+}
