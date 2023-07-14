@@ -1,0 +1,250 @@
+.General {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.Title {
+    display: flex;
+    align-items: center;
+    border-bottom: #bebebe 2px solid;
+    margin: 10px 0;
+    padding: 0 0 5px 0;
+    align-items: center;
+}
+
+.Title-i {
+    font-size: 24px;
+    margin-right: 5px;
+}
+
+.Title-h1 {
+    font-size: 22px;
+    font-weight: var(--title-weight);
+}
+
+.Layout {
+    display: grid;
+    grid-template-columns: 75% auto;
+    gap: 20px;
+}
+
+.Courses-section,
+.Info {
+    background: #fff;
+    border: #bebebe 1px solid;
+    border-radius: 5px;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.prog {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.desc {
+    grid-column: 1/3;
+}
+
+.Activities {
+    display: flex;
+    flex-direction: column;
+}
+
+.Activity-container {
+    background: #fff;
+    border: #bebebe 1px solid;
+    border-radius: 5px;
+    padding: 1.25rem;
+    display: flex;
+    margin: 10px 0;
+}
+
+.not-there {
+    margin: 20px auto;
+}
+
+.Info {
+    grid-column: 2/3;
+    grid-row: 1/4;
+}
+
+.Counter-h3 {
+    font-size: 18px;
+}
+
+.StudentList {
+    margin: 10px 0;
+}
+
+.Activity-button {
+    background: var(--success);
+    color: white;
+}
+
+.Post {
+    margin: auto;
+}
+
+.Post-title {
+    display: flex;
+    align-items: center;
+    border-bottom: #bebebe 2px solid;
+    border-radius: 2px;
+    padding: 0 0 5px 0;
+    margin: 10px 0;
+}
+
+.Post-i {
+    margin-right: 5px;
+}
+
+.Post-h1 {
+    font-weight: var(--title-weight);
+}
+
+.Post-content {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: #bebebe 1px solid;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.Post-textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    margin: 10px 0;
+}
+
+.Post-button {
+    margin: 10px 0;
+}
+
+.button-active {
+    margin: 20px auto;
+}
+
+.Post-info {
+    background: #fff;
+    border: #bebebe 1px solid;
+    border-radius: 5px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 70px 3fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    grid-template-rows: minmax(10px, 20px);
+    position: relative;
+    margin: 5px 0;
+}
+
+.e1 {
+    grid-row: 1/3;
+}
+
+.e4 {
+    display: block !important;
+    text-align: justify;
+    grid-column: 1/3;
+}
+
+.Post-info .drop-menu {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    float: right;
+    border: none;
+    background: none;
+}
+
+.Post-info>i {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.Post-img--avatar {
+    width: 60px;
+    height: 60px;
+}
+
+
+@media screen and (max-width: 2100px) {
+
+    .Title-i {
+        font-size: 24px;
+        margin-right: 5px;
+    }
+
+    .Title-h1 {
+        font-size: 24px;
+    }
+
+    .Post-i {
+        font-size: 24px;
+    }
+
+    .Post-h1 {
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 1440px) {}
+
+@media screen and (max-width: 1024px) {
+
+    .Post {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .Title-i {
+        font-size: 20px;
+    }
+
+    .Title-h1 {
+        font-size: 20px;
+    }
+
+    .Post {
+        width: 95%;
+    }
+
+    .Post-i {
+        font-size: 20px;
+    }
+
+    .Post-h1 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+
+    .Post {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .Title-i {
+        font-size: 18px;
+    }
+
+    .Title-h1 {
+        font-size: 18px;
+    }
+
+    .Post-i {
+        font-size: 18px;
+    }
+
+    .Post-h1 {
+        font-size: 18px;
+    }
+}

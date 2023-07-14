@@ -1,0 +1,237 @@
+.StudentModules {
+    display: flex;
+    flex-direction: column;
+}
+
+.Tree {
+    grid-column: 2/3;
+    grid-row: 1/3;
+}
+
+.Title {
+    display: flex;
+    margin: 10px 0;
+    border-bottom: #bebebe 2px solid;
+    border-radius: 2px;
+    padding: 0 0 5px 0;
+    align-items: center;
+}
+
+.Title-i {
+    font-size: 24px;
+    margin-right: 5px;
+}
+
+.Title-h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.Course-a {
+    margin: 10px 0;
+}
+
+.Course-container {
+    padding: 10px;
+    background: #fff;
+    border-radius: 4px;
+    align-items: center;
+    border: #bebebe 1px solid;
+}
+
+.Modules-div {
+    background: #fff;
+    display: flex;
+    padding: 10px;
+    border-radius: 4px;
+    align-items: center;
+    border: #bebebe 1px solid;
+}
+
+.Modules-img {
+    margin: 10px auto;
+}
+
+.Modules-p {
+    width: 100%;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.Lesson {
+    display: flex;
+    flex-direction: column;
+}
+
+.Lesson-title {
+    display: flex;
+    align-items: center;
+    border-bottom: #bebebe 2px solid;
+    border-radius: 2px;
+    padding: 0 0 5px 0;
+    margin: 10px 0;
+}
+
+.Lesson-i {
+    font-size: 24px;
+    margin-right: 5px;
+}
+
+.Lesson-h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.Lesson-div {
+    border: #bebebe 1px solid;
+    background: #fff;
+    text-align: justify;
+    border-radius: 5px;
+    margin: 5px 0;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Lesson-p--name {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.Lesson-p--date {
+    margin-left: auto;
+}
+
+details {
+    position: relative;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    max-height: 2.5em !important;
+    transition: all 0.1s ease;
+}
+
+details ::-webkit-details-marker {
+    display: none;
+}
+
+details>summary {
+    position: relative;
+    margin-top: 0.25em;
+    color: #35abfa;
+    padding: 0.1em 0.5em 0.2em;
+    background: #444;
+}
+
+details>summary:before {
+    /* content: "⊞"; */
+    color: #eee;
+    font-size: 0.5em;
+    margin-right: 0.5em;
+}
+
+details[open]>summary {
+    background: rgb(11 78 179);
+    color: #eee;
+}
+
+details[open]>summary:before {
+    /* content: "⊟"; */
+    color: #ccc;
+}
+
+.folder {
+    margin: 0 0 0.5em 0.86em;
+    padding: 0.5em 0em 0.5em 1.5em;
+    border-left: 0.1em #ccc dotted;
+    border-bottom: 0.1em #ccc dotted;
+}
+
+.folder p {
+    margin: 0;
+}
+
+details[open] {
+    height: auto;
+    max-height: 99em !important;
+    transition: all 1.2s ease;
+}
+
+details:not([open]) .folder {
+    height: 0px !important;
+}
+
+@media screen and (max-width: 2100px) {
+    .Main {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        display: grid;
+        grid-template-columns: 75% auto;
+        gap: 30px;
+    }
+
+    .Modules {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Modules-a {
+        width: 100%;
+        margin: 7px 0;
+    }
+
+    .Modules-img {
+        width: 60px;
+    }
+}
+
+@media screen and (max-width: 1440px) {}
+
+@media screen and (max-width: 1024px) {
+    .Main {
+        width: 100%;
+        grid-template-columns: 70% auto;
+        gap: 7px;
+    }
+
+    .Modules-a {
+        width: 260px;
+    }
+
+    .Modules-img {
+        width: 90px;
+    }
+
+    .Lesson {
+        grid-column: 1/3;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .Main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Modules {
+        width: 90%;
+    }
+
+    .Modules-a {
+        width: 100%;
+    }
+
+    .Tree {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .Modules {
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,95 @@
+.Form-section {
+    width: 85%;
+    margin: auto;
+    /* min-height: calc(100vh - 150px); */
+    display: flex;
+    flex-direction: column;
+}
+
+.Title {
+    display: flex;
+    align-items: center;
+    border-bottom: #bebebe 2px solid;
+    margin: 10px 0;
+    padding: 0 0 5px 0;
+}
+
+.Title-h1 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.Activity {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.Courses-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.Course-div {
+    background: #fff;
+    border: 2px solid var(--primary);
+    padding: 20px;
+    border-radius: 7px;
+}
+
+.Field {
+    display: flex;
+    margin: 15px 0;
+}
+
+.Field--title,
+.Field--description,
+.Field--type {
+    justify-content: space-between;
+}
+
+.Field--type {
+    position: relative;
+}
+
+.Field--date {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 10px 0;
+}
+
+#list {
+    list-style-type: none;
+    width: 70%;
+    height: auto;
+    position: absolute;
+    right: 0;
+    top: 100%;
+}
+
+#list li {
+    background-color: #EEEEEE;
+    border: 1px solid #ccc;
+    padding: 5px;
+    width: 100%;
+    float: left;
+    cursor: pointer;
+}
+
+.Field-textarea,
+.Field-input {
+    width: 70%;
+}
+
+.Formulario-button {
+    margin: 10px auto;
+}
+
+@media screen and (max-width: 2100px) {
+    .Formulario-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

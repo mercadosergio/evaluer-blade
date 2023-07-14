@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -39,15 +40,8 @@ class StudentController extends Controller
             'user_id' => 'required',
         ]);
 
-        $student = new Student;
-        $student->names = $request->names;
-        $student->first_lastname = $request->first_lastname;
-        $student->second_lastname = $request->second_lastname;
-        $student->dni = $request->dni;
-        $student->semester = $request->semester;
-        $student->user_id = $request->user_id;
-
-        $student->save();
+        Student::create([]);
+        return back();
         // return redirect()->route('')
     }
 
@@ -81,5 +75,25 @@ class StudentController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->get('term');
+        $courseId = $request->get('courseId');
+
+        $students = Student::with(['courses' => function ($query) use ($courseId) {
+            $query->where('course_id', $courseId);
+        }])->where('dni', 'LIKE', '%' . $search . '%')->get();
+
+        $result = [];
+
+        foreach ($students as $student) {
+            $result[] = [
+                'label' => $student->names . ' ' . $student->first_lastname . ' ' . $student->second_lastname,
+                'value' => $student->names . ' ' . $student->first_lastname . ' ' . $student->second_lastname,
+            ];
+        }
+        return response()->json($students);
     }
 }

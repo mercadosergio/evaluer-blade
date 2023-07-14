@@ -1,9 +1,20 @@
+:root {
+    --primary: rgb(11, 78, 179);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: rgb(246 249 255);
+}
+
 .Header {
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
-    padding: 20px 0;
+    padding: 10px 0;
     z-index: 1;
 }
 
@@ -213,4 +224,185 @@
 .Dropdown-i {
     margin-right: 5px;
     font-size: 18px;
+}
+
+.Main {
+    margin-top: 90px;
+    padding: 20px;
+    /* min-height: calc(100vh - 90.36px) !important; */
+}
+
+/* Footer */
+.Footer {
+    color: #fff;
+    margin-top: auto;
+}
+
+.Footer-info {
+    justify-content: center;
+}
+
+.Footer-h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.Footer-p {
+    text-align: center;
+}
+
+@media screen and (max-width: 2100px) {
+    .mobile-display {
+        display: none;
+    }
+
+    .desktop-display {
+        display: flex;
+    }
+
+    /* --------Header--------- */
+    .Header-hamburger {
+        display: none;
+    }
+
+    .logo-aunar {
+        width: 70px;
+        margin-right: 20px;
+    }
+
+    .logo-evaluer {
+        width: 180px;
+        border-radius: 7px;
+    }
+
+    /* Footer */
+    .Footer-info {
+        display: flex;
+        margin: 40px auto;
+    }
+
+    .Footer-about {
+        margin: 0 30px;
+        max-width: 580px;
+    }
+
+    .Footer-team {
+        margin: 0 30px;
+    }
+
+    .Footer-team {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .Footer-h3 {
+        text-align: center;
+        margin-bottom: 7px;
+        font-weight: 600;
+    }
+
+    .Footer-div {
+        justify-content: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        margin: 0 10px;
+    }
+
+    .Footer-img {
+        margin: 10px auto;
+    }
+
+    .copyright-text {
+        margin: 30px auto;
+    }
+
+    .Error-content {
+        width: 50%;
+        margin: auto;
+    }
+
+    .Error-p,
+    .Error-a {
+        font-size: 20px;
+        font-weight: 600;
+    }
+}
+
+@media screen and (max-width: 1440px) {}
+
+@media screen and (max-width: 1024px) {
+    .logo-aunar {
+        width: 50px;
+    }
+
+    .logo-evaluer {
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .mobile-display {
+        display: flex;
+    }
+
+    .desktop-display {
+        display: none;
+    }
+
+    .Header-nav {
+        width: 97%;
+    }
+
+    .Header-hamburger {
+        align-items: center;
+    }
+
+    .hamburger {
+        font-size: 32px;
+        color: #fff;
+    }
+
+    .Isotipo-a {
+        margin-left: 15px;
+        border-radius: 3px;
+    }
+
+    .Isotipo {
+        border-radius: 3px;
+        background: #fff;
+        padding: 3px;
+        width: 40px;
+    }
+
+    /* Footer */
+    .Footer-info {
+        flex-direction: column;
+        width: 75%;
+    }
+
+    .Footer-team {
+        margin: 35px auto;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .logo-aunar {
+        width: 50px;
+    }
+
+    .logo-evaluer {
+        width: 140px;
+    }
+
+    .Avatar-span {
+        display: none;
+    }
+
+    /* Footer */
+    .Footer-info {
+        width: 100%;
+    }
 }
