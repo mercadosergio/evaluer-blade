@@ -14,7 +14,6 @@ return new class extends Migration
     {
         Schema::create('courses_students', function (Blueprint $table) {
             $table->id();
-
             $table->bigInteger('student_id')->unsigned();
             $table->foreign("student_id")->references("id")->on("students");
 
@@ -26,9 +25,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('courses_students');

@@ -1,5 +1,3 @@
-<link href="{{ asset('css/activity.student.css') }}" rel="stylesheet">
-
 @extends('layout.app')
 
 @section('content')
@@ -29,9 +27,9 @@
     <div class="Form-container">
         @switch($activity->type_id)
         @case(1)
-        <div>
-            PORPEAAAAAA
-        </div>
+            @if(time() > $activity->available_from || time() < $activity->available_until)
+                <a href="{{ route('proposition.form', ['id' => $activity->id ]) }}">Ir al formulario</a>
+            @endif
         @break
 
         @case(2)
@@ -71,7 +69,7 @@
                             <button class="Choose-file-button">Escoger archivo</button>
                         </label>
                     </div>
-                    <button type="submit" {{ (time() < $activity->available_from) ? 'disabled' : '' }} class="Send-button button-default primary-button">Enviar</button>
+                    <button type="submit" {{ (time() < $activity->available_from) ? 'disabled' : '' }} class="Send-button button txt-white back-primary">Enviar</button>
                 </form>
                 @endif
             @endif
@@ -90,5 +88,9 @@
 @endsection
 
 @push('styles')
-@vite('resources/css/activity.student.css')
+@vite('resources/css/student.activity.css')
+@endpush
+
+@push('scripts')
+@vite('resources/js/student.activity.js')
 @endpush

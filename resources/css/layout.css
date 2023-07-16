@@ -1,5 +1,6 @@
 :root {
     --primary: rgb(11, 78, 179);
+    --secondary: #fee700;
 }
 
 body {

@@ -39,6 +39,10 @@
     border: #bebebe 1px solid;
 }
 
+.Activity-link {
+    margin: 6px 0;
+}
+
 .Modules-div {
     background: #fff;
     display: flex;
@@ -46,18 +50,19 @@
     border-radius: 4px;
     align-items: center;
     border: #bebebe 1px solid;
+    border-left: 5px solid var(--primary);
 }
 
-.Modules-img {
-    margin: 10px auto;
+.Modules-div:hover {
+    background-color: #e7e7e7;
 }
 
-.Modules-p {
-    width: 100%;
-    color: #fff;
-    font-size: 17px;
-    font-weight: 500;
+.Modules-div:hover p {
     color: var(--primary);
+}
+
+.Modules-div p {
+    font-weight: 500;
 }
 
 .Lesson {

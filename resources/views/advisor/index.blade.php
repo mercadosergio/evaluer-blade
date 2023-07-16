@@ -13,7 +13,7 @@
         @foreach ($courses as $course)
         <a href="{{ route('courses.show', ['id' => $course->id]) }}">
             <div class="Course-div">
-                <h3 class="Course-name">{{ $course->name }}</h3>
+                <h3 class="Course-name">{{ $course->subject }}</h3>
                 <p>{{ $course->program }} Semestre: {{ $course->semester }}</p>
             </div>
         </a>

@@ -4,7 +4,7 @@
 
 <div class="General">
     <div class="Title">
-        <h1 class="Title-h1">{{ $course->name }}</h1>
+        <h1 class="Title-h1">{{ $course->subject }}</h1>
     </div>
     <div class="Layout">
         <section class="Courses-section">

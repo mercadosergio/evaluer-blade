@@ -37,7 +37,7 @@
             <!-- Escritorio design -->
             <div class="Header-container_logo desktop-display">
                 <img src="{{ asset('img/aunar-logo-1.png') }}" class="logo-aunar">
-                <a class="navbar-brand" href="">
+                <a class="navbar-brand" href="{{ route('dashboard') }}">
                     <img src="{{ asset('img/evaluer-logo-2.png') }}" class="logo-evaluer">
                 </a>
             </div>

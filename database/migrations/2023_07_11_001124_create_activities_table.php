@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
+            $table->string('description', 700);
             $table->integer('status');
             $table->string('available_from');
             $table->string('available_until');

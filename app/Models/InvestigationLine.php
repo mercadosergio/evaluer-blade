@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class InvestigationLine extends Model
 {
     use HasFactory;
+
+    public function program()
+    {
+        return $this->belongsTo(Program::class);
+    }
 }

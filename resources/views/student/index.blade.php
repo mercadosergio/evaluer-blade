@@ -3,16 +3,16 @@
 @section('content')
 
 <section class="StudentModules">
-    <div class="Title">
-        <i class="Title-i bi bi-bar-chart-steps"></i>
-        <h1 class="Title-h1">Mi curso</h1>
-    </div>
-
+    
     @if ($user->student && $user->student->courses->count() > 0)
     @foreach ($user->student->courses as $course)
+    <div class="Title">
+        <i class="Title-i bi bi-bar-chart-steps"></i>
+        <h1 class="Title-h1">{{ $course->subject }}</h1>
+    </div>
     <a class="Course-a">
         <div class="Course-container">
-            <p>{{ $course->name }}</p>
+            <p>{{ $course->subject }}</p>
             <p>{{ $course->description }}</p>
         </div>
     </a>
@@ -30,7 +30,7 @@
     @if ($course->activities->count() > 0)
     <div class="Modules">
         @foreach ($course->activities as $activity)
-        <a href="{{ route('student.activity', ['id' => $activity->id]) }}">
+        <a class="Activity-link" href="{{ route('student.activity', ['id' => $activity->id]) }}">
             <div class="Modules-div">
                 <p class="">{{ $activity->title }}</p>
             </div>

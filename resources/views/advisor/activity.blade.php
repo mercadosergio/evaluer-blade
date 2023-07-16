@@ -42,7 +42,7 @@
                     <th>Semestre</th>
                     <th>Fecha de entrega</th>
                     <th>Nota</th>
-                    <th>Acciòn</th>
+                    <th>Acción</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,7 +53,7 @@
                     <td>{{ $proposition->semester }}</td>
                     <td>{{ $proposition->created_at }}</td>
                     <td>{{ $proposition->status }}</td>
-                    <td><button>see</button></td>
+                    <td><button class="Preview-button" title="Ver"><i class="bi bi-eye-fill"></i></button></td>
                 </tr>
             </tbody>
         </table>

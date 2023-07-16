@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Activity;
 use App\Models\Course;
 use App\Models\Draft;
+use App\Models\InvestigationLine;
 use App\Models\Program;
 use App\Models\Role;
 use App\Models\User;
@@ -20,6 +21,29 @@ class PageController extends Controller
         //     return redirect('/');
         // }
         return view('home');
+    }
+
+    public function dashboard()
+    {
+        $user = User::find(Auth::id());
+        if ($user) {
+            switch ($user->role_id) {
+                case 1:
+                    return redirect()->route('student.dashboard');
+                    break;
+                case 2:
+                    return redirect()->route('advisor.dashboard');
+                    break;
+                case 3:
+                    return redirect()->route('dean.dashboard');
+                    break;
+                case 4:
+                    return redirect()->route('admin');
+                    break;
+            }
+        } else {
+            return redirect('/');
+        }
     }
 
     public function admin()
@@ -86,5 +110,16 @@ class PageController extends Controller
     {
         $course = Course::findOrFail($courseId);
         return view('student.team', compact('course'));
+    }
+
+    public function proposition_form(string $id)
+    {
+        $activityId = $id;
+        $user = User::with('student.program', 'student.teams.students', 'student.courses.advisor')->find(Auth::id());
+        $student = $user->student;
+        $members = $student->teams[0]->students;
+        $lines = InvestigationLine::where('program_id', $user->student->program->id)->get();
+        // dd($student->courses[0]->advisor);
+        return view('propositions.form', compact('activityId', 'student', 'lines', 'members'));
     }
 }
