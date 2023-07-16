@@ -90,7 +90,7 @@ class PageController extends Controller
 
     public function advisor_activity(string $id)
     {
-        $activity = Activity::findOrFail($id);
+        $activity = Activity::with('propositions')->findOrFail($id);
         return view('advisor.activity', compact('activity'));
     }
 

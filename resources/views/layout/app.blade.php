@@ -11,7 +11,8 @@
     <title>Evaluer</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
@@ -19,6 +20,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    @livewireStyles
     @vite(['resources/css/app.css', 'resources/css/layout.css', 'resources/js/header.js'])
     @stack('styles')
 
@@ -47,17 +49,20 @@
             </ul>
 
             @auth
-            <div class="Dropdown">
-                <input class="dropdown-checkbox" type="checkbox" id="dropdown" name="dropdown" />
-                <label class="for-dropdown" for="dropdown"> <a class="Avatar" data-dropdown-button>
-                        <img class="Avatar-img" src="{{ asset('avatar/' . auth()->user()->avatar) }}" alt="">
-                        <span class="Avatar-span">{{ auth()->user()->name }}</span>
-                    </a></label>
-                <ul class="Dropdown-ul">
-                    <li class="Dropdown-li"><a class="Dropdown-a dropdown-item" href="/configuracion"><i class="Dropdown-i bi bi-gear"></i>Configuración</a></li>
-                    <li class="Dropdown-li"><a class="Dropdown-a dropdown-item text-danger" href="{{ route('logout') }}"><i class="Dropdown-i bi bi-box-arrow-left"></i>Cerrar sesión</a></li>
-                </ul>
-            </div>
+                <div class="Dropdown">
+                    <input class="dropdown-checkbox" type="checkbox" id="dropdown" name="dropdown" />
+                    <label class="for-dropdown" for="dropdown"> <a class="Avatar" data-dropdown-button>
+                            <img class="Avatar-img" src="{{ asset('avatar/' . auth()->user()->avatar) }}" alt="">
+                            <span class="Avatar-span">{{ auth()->user()->name }}</span>
+                        </a></label>
+                    <ul class="Dropdown-ul">
+                        <li class="Dropdown-li"><a class="Dropdown-a dropdown-item" href="/configuracion"><i
+                                    class="Dropdown-i bi bi-gear"></i>Configuración</a></li>
+                        <li class="Dropdown-li"><a class="Dropdown-a dropdown-item text-danger"
+                                href="{{ route('logout') }}"><i class="Dropdown-i bi bi-box-arrow-left"></i>Cerrar
+                                sesión</a></li>
+                    </ul>
+                </div>
             @endauth
 
         </nav>
@@ -84,11 +89,13 @@
                             <h3 class="Footer-h3 team-title">Equipo de desarrollo</h3>
                             <div class="Footer-div">
                                 <label>Sergio Mercado</label>
-                                <img class="Footer-img" width="100" src="{{ asset('img/foto-sergio.jpg') }}" alt="">
+                                <img class="Footer-img" width="100" src="{{ asset('img/foto-sergio.jpg') }}"
+                                    alt="">
                             </div>
                             <div class="Footer-div">
                                 <label>Dager Lopez</label>
-                                <img class="Footer-img" width="100" src="{{ asset('img/foto-dager.png') }}" alt="">
+                                <img class="Footer-img" width="100" src="{{ asset('img/foto-dager.png') }}"
+                                    alt="">
                             </div>
                         </section>
                     </div>
@@ -98,9 +105,13 @@
             </div>
         </div>
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    @livewireScripts
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous">
+    </script>
     @stack('scripts')
 </body>
 
