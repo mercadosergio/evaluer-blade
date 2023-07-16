@@ -5,7 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\PropositionController;
+use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -27,14 +27,14 @@ Route::get('/activities/new/{courseId}', [ActivityController::class, 'create'])-
 Route::get('/advisor/activities/{id}', [PageController::class, 'advisor_activity'])->name('advisor.activity');
 Route::get('/student/activities/{id}', [PageController::class, 'student_activity'])->name('student.activity');
 
-Route::get('/student/activities/{id}/propositions/form', [PageController::class, 'proposition_form'])->name('proposition.form');
+Route::get('/student/activities/{id}/proposals/form', [PageController::class, 'proposal_form'])->name('proposal.form');
 
 Route::get('/admin/users', [PageController::class, 'users'])->name('users');
 Route::get('/admin/users/register', [PageController::class, 'register'])->name('register');
 
 Route::post('/users', [UserController::class, 'register'])->name('users.register');
 Route::post('/activities', [ActivityController::class, 'store'])->name('activities.store');
-Route::post('/propositions', [PropositionController::class, 'store'])->name('store.proposition');
+Route::post('/proposals', [ProposalController::class, 'store'])->name('store.proposal');
 // Route::post('/activities', [ActivityController::class, 'store'])->name('store.team');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="Main-section">
-    <form novalidate method="POST" action="{{ route('store.proposition') }}" id="form-propuesta">
+    <form novalidate method="POST" action="{{ route('store.proposal') }}" id="form-propuesta">
         @csrf
         <article class="General-article">
             <div class="Head">
@@ -102,5 +102,5 @@
 @endsection
 
 @push('styles')
-@vite('resources/css/form.proposition.css')
+@vite('resources/css/form.proposal.css')
 @endpush

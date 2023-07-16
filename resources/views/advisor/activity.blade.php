@@ -30,8 +30,8 @@
         <div class="Qualifier">
             @switch($activity->type_id)
                 @case('1')
-                    @if ($activity->propositions && $activity->propositions->count() > 0)
-                        @livewire('propositions-list', ['activity' => $activity])
+                    @if ($activity->proposals && $activity->proposals->count() > 0)
+                        @livewire('proposals-list', ['activity' => $activity])
                     @else
                         <span class='center'><em>No hay entregas disponibles.</em></span>
                     @endif

@@ -28,7 +28,7 @@
         @switch($activity->type_id)
         @case(1)
             @if(time() > $activity->available_from || time() < $activity->available_until)
-                <a href="{{ route('proposition.form', ['id' => $activity->id ]) }}">Ir al formulario</a>
+                <a href="{{ route('proposal.form', ['id' => $activity->id ]) }}">Ir al formulario</a>
             @endif
         @break
 

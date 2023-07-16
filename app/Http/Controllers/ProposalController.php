@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Proposition;
+use App\Models\Proposal;
 use Illuminate\Http\Request;
 
-class PropositionController extends Controller
+class ProposalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,7 +35,7 @@ class PropositionController extends Controller
             'description' => 'required',
         ]);
 
-        Proposition::create([
+        Proposal::create([
             'title' => $request->title,
             'description' => $request->description,
             'line' => $request->line,

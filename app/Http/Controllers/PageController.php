@@ -90,7 +90,7 @@ class PageController extends Controller
 
     public function advisor_activity(string $id)
     {
-        $activity = Activity::with('propositions')->findOrFail($id);
+        $activity = Activity::with('proposals')->findOrFail($id);
         return view('advisor.activity', compact('activity'));
     }
 
@@ -112,7 +112,7 @@ class PageController extends Controller
         return view('student.team', compact('course'));
     }
 
-    public function proposition_form(string $id)
+    public function proposal_form(string $id)
     {
         $activityId = $id;
         $user = User::with('student.program', 'student.teams.students', 'student.courses.advisor')->find(Auth::id());
@@ -120,6 +120,6 @@ class PageController extends Controller
         $members = $student->teams[0]->students;
         $lines = InvestigationLine::where('program_id', $user->student->program->id)->get();
         // dd($student->courses[0]->advisor);
-        return view('propositions.form', compact('activityId', 'student', 'lines', 'members'));
+        return view('proposals.form', compact('activityId', 'student', 'lines', 'members'));
     }
 }

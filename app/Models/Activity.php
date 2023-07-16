@@ -30,8 +30,8 @@ class Activity extends Model
         return $this->hasMany(Draft::class, 'activity_id');
     }
 
-    public function propositions()
+    public function proposals()
     {
-        return $this->hasMany(Proposition::class, 'activity_id');
+        return $this->hasMany(Proposal::class, 'activity_id');
     }
 }

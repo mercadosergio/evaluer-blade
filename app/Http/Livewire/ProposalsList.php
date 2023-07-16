@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class PropositionsList extends Component
+class ProposalsList extends Component
 {
     public $activity;
 
@@ -15,6 +15,6 @@ class PropositionsList extends Component
 
     public function render()
     {
-        return view('livewire.propositions-list');
+        return view('livewire.proposals-list');
     }
 }
