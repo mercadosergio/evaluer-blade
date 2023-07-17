@@ -20,7 +20,12 @@
                     <td>{{ $proposal->semester }}</td>
                     <td>{{ $proposal->created_at }}</td>
                     <td>{{ $proposal->status }}</td>
-                    <td><button class="Preview-button" title="Ver"><i class="bi bi-eye-fill"></i></button></td>
+                    <td>
+                        <button class="Preview-button" title="Ver" type="button" wire:click="$emit('openModal')">
+                            <i class="bi bi-eye-fill"></i>
+                        </button>
+                    </td>
+                    @livewire('proposal-modal', ['proposal' => $proposal])
                 </tr>
             </tbody>
         </table>

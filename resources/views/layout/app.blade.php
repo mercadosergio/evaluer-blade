@@ -18,8 +18,7 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     @livewireStyles
     @vite(['resources/css/app.css', 'resources/css/layout.css', 'resources/js/header.js'])
     @stack('styles')
@@ -112,6 +111,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
         integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous">
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     @stack('scripts')
 </body>
 
