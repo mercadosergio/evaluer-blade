@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\ActivityType;
+use App\Models\Admin;
 use App\Models\Advisor;
 use App\Models\Course;
 use App\Models\CoursesStudent;
@@ -123,6 +124,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('0987654321'),
             'name' => 'Jose',
             'avatar' => 'default.png',
+            'status' => 1,
             'role_id' => 1,
         ]);
         User::create([
@@ -132,6 +134,7 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('2222222222'),
             'name' => 'Maria',
             'avatar' => 'default.png',
+            'status' => 1,
             'role_id' => 1,
         ]);
         User::create([
@@ -141,9 +144,28 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('1234567891'),
             'name' => 'Marcos',
             'avatar' => 'default.png',
+            'status' => 1,
             'role_id' => 2,
         ]);
+        User::create([
+            'id' => 4,
+            'email' => 'juan@mail.com',
+            'username' => '1234567890',
+            'password' => bcrypt('1234567890'),
+            'name' => 'Juan',
+            'avatar' => 'default.png',
+            'status' => 1,
+            'role_id' => 4,
+        ]);
 
+        Admin::create([
+            'id' => 1,
+            'names' => 'Juan',
+            'first_lastname' => 'Hernandez',
+            'second_lastname' => 'Avila',
+            'dni' => '1234567890',
+            'user_id' => 4,
+        ]);
         Student::create([
             'id' => 1,
             'names' => 'Jose',

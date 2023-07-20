@@ -54,7 +54,7 @@
                 <img class="Modules-img" src="{{ asset('img/add-user.png') }}" alt="">
             </div>
         </a>
-        <a href="{{ ('users')}}" class="Modules-a">
+        <a href="{{ route('show.users')}}" class="Modules-a">
             <div class="Modules-div back-primary">
                 <h2 class="Modules-h2">Usuarios</h2>
                 <img class="Modules-img" src="{{ asset('img/control-user.png') }}" alt="">

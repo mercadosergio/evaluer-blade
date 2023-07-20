@@ -26,49 +26,52 @@
 </head>
 
 <body>
-    <header class="Header back-primary">
-        <nav class="Header-nav">
-            <!-- Mobile design -->
-            <div class="Header-hamburger mobile-display">
-                <i class="hamburger bi bi-list toggle-sidebar-btn"></i>
-                <a class="Isotipo-a" href="">
-                    <img class="Isotipo" src="{{ asset('img/iso.png') }}" alt="">
-                </a>
-            </div>
-            <!-- Escritorio design -->
-            <div class="Header-container_logo desktop-display">
-                <img src="{{ asset('img/aunar-logo-1.png') }}" class="logo-aunar">
-                <a class="navbar-brand" href="{{ route('dashboard') }}">
-                    <img src="{{ asset('img/evaluer-logo-2.png') }}" class="logo-evaluer">
-                </a>
-            </div>
-            <!-- Escritorio design -->
-            <ul class="Header-ul desktop-display">
-                <li class="Header-li"><a class="Header-a" href="">Inicio</a></li>
-            </ul>
-
-            @auth
-                <div class="Dropdown">
-                    <input class="dropdown-checkbox" type="checkbox" id="dropdown" name="dropdown" />
-                    <label class="for-dropdown" for="dropdown"> <a class="Avatar" data-dropdown-button>
-                            <img class="Avatar-img" src="{{ asset('avatar/' . auth()->user()->avatar) }}" alt="">
-                            <span class="Avatar-span">{{ auth()->user()->name }}</span>
-                        </a></label>
-                    <ul class="Dropdown-ul">
-                        <li class="Dropdown-li"><a class="Dropdown-a dropdown-item" href="/configuracion"><i
-                                    class="Dropdown-i bi bi-gear"></i>Configuración</a></li>
-                        <li class="Dropdown-li"><a class="Dropdown-a dropdown-item text-danger"
-                                href="{{ route('logout') }}"><i class="Dropdown-i bi bi-box-arrow-left"></i>Cerrar
-                                sesión</a></li>
-                    </ul>
+    <div class="Screen">
+        <header class="Header back-primary">
+            <nav class="Header-nav">
+                <!-- Mobile design -->
+                <div class="Header-hamburger mobile-display">
+                    <i class="hamburger bi bi-list toggle-sidebar-btn"></i>
+                    <a class="Isotipo-a" href="">
+                        <img class="Isotipo" src="{{ asset('img/iso.png') }}" alt="">
+                    </a>
                 </div>
-            @endauth
+                <!-- Escritorio design -->
+                <div class="Header-container_logo desktop-display">
+                    <img src="{{ asset('img/aunar-logo-1.png') }}" class="logo-aunar">
+                    <a class="navbar-brand" href="{{ route('dashboard') }}">
+                        <img src="{{ asset('img/evaluer-logo-2.png') }}" class="logo-evaluer">
+                    </a>
+                </div>
+                <!-- Escritorio design -->
+                <ul class="Header-ul desktop-display">
+                    <li class="Header-li"><a class="Header-a" href="">Inicio</a></li>
+                </ul>
 
-        </nav>
-    </header>
-    <main class="Main">
-        @yield('content')
-    </main>
+                @auth
+                    <div class="Dropdown">
+                        <input class="dropdown-checkbox" type="checkbox" id="dropdown" name="dropdown" />
+                        <label class="for-dropdown" for="dropdown"> <a class="Avatar" data-dropdown-button>
+                                <img class="Avatar-img" src="{{ asset('avatar/' . auth()->user()->avatar) }}"
+                                    alt="">
+                                <span class="Avatar-span">{{ auth()->user()->name }}</span>
+                            </a></label>
+                        <ul class="Dropdown-ul">
+                            <li class="Dropdown-li"><a class="Dropdown-a dropdown-item" href="/configuracion"><i
+                                        class="Dropdown-i bi bi-gear"></i>Configuración</a></li>
+                            <li class="Dropdown-li"><a class="Dropdown-a dropdown-item text-danger"
+                                    href="{{ route('logout') }}"><i class="Dropdown-i bi bi-box-arrow-left"></i>Cerrar
+                                    sesión</a></li>
+                        </ul>
+                    </div>
+                @endauth
+
+            </nav>
+        </header>
+        <main class="Main">
+            @yield('content')
+        </main>
+    </div>
 
     <footer class="Footer back-primary">
         <div class="container">

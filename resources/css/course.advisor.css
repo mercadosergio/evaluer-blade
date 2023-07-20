@@ -52,15 +52,27 @@
     flex-direction: column;
 }
 
-.Activity-container {
+/* .Activity-container {
     background: #fff;
     border: #bebebe 1px solid;
     border-radius: 5px;
     padding: 1.25rem;
     display: flex;
-    margin: 10px 0;
+} */
+.Activity-container {
+    background: #fff;
+    display: flex;
+    padding: 10px;
+    margin: 7px 0;
+    border-radius: 4px;
+    align-items: center;
+    border: #bebebe 1px solid;
+    border-left: 5px solid var(--primary);
 }
 
+.Activity-container:hover {
+    background-color: #e7e7e7;
+}
 .not-there {
     margin: 20px auto;
 }

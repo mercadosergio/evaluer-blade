@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 
+.Screen {
+    min-height: 100vh;
+}
+
 * {
     font-family: "Quicksand", sans-serif;
     box-sizing: border-box !important;
@@ -7,14 +11,11 @@
     padding: 0;
 }
 
-/* ===== Scrollbar CSS ===== */
-/* Firefox */
 * {
     scrollbar-width: auto;
     scrollbar-color: #dddddd #ffffff;
 }
 
-/* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
     width: 12px;
 }
@@ -122,4 +123,24 @@ table {
 
 .txt-white {
     color: #ffffff;
+}
+
+.Title {
+    display: flex;
+    align-items: center;
+    border-bottom: #bebebe 2px solid;
+    margin: 10px auto;
+    border-radius: 2px;
+    padding: 0 0 5px 0;
+    font-weight: 600;
+}
+
+.Title-h1 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.Title i {
+    font-size: 20px;
+    margin-right: 5px;
 }

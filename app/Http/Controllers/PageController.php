@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Activity;
+use App\Models\Admin;
+use App\Models\Advisor;
 use App\Models\Course;
+use App\Models\Dean;
 use App\Models\Draft;
 use App\Models\InvestigationLine;
 use App\Models\Program;
 use App\Models\Role;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -78,7 +82,12 @@ class PageController extends Controller
 
     public function users()
     {
-        return view('users.show');
+        $students = Student::with('user')->get();
+        $advisors = Advisor::with('user')->get();
+        $deans = Dean::with('user')->get();
+        // $admins = Admin::with('user')->get();
+
+        return view('users.show', compact('students', 'advisors', 'deans'));
     }
 
     public function register()
