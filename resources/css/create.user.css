@@ -46,6 +46,11 @@ select,
     width: 50% !important;
 }
 
+.Semester-buttongroup {
+    display: flex;
+    justify-content: space-between;
+}
+
 .Register-button {
     margin: auto;
 }

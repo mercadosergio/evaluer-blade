@@ -131,4 +131,11 @@ class PageController extends Controller
         // dd($student->courses[0]->advisor);
         return view('proposals.form', compact('activityId', 'student', 'lines', 'members'));
     }
+
+    public function programs()
+    {
+        $programs = Program::all();
+
+        return view('admin.programs.show', compact('programs'));
+    }
 }

@@ -5,9 +5,11 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use App\Models\Program;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',        [PageController::class, 'home'])->name('home');
@@ -18,6 +20,7 @@ Route::prefix('admin')->middleware('role:4')->group(function () {
     Route::get('/',               [PageController::class, 'admin'])->name('admin');
     Route::get('/users',          [PageController::class, 'users'])->name('show.users');
     Route::get('/users/register', [PageController::class, 'register'])->name('register');
+    Route::get('/programs',       [PageController::class, 'programs'])->name('show.programs');
 });
 
 Route::prefix('student')->middleware('role:1')->group(function () {
@@ -44,6 +47,7 @@ Route::post('/proposals', [ProposalController::class, 'store'])->name('store.pro
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::get('/autocomplete', [ActivityController::class, 'search']);
+Route::get('/radio-semesters', [ProgramController::class, 'getRadioButtons']);
 Route::get('/autocomplete-student', [StudentController::class, 'search']);
 
 // Route::post('/activities', [ActivityController::class, 'store'])->name('store.team');

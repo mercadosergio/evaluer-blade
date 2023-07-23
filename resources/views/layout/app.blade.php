@@ -68,6 +68,10 @@
 
             </nav>
         </header>
+        @if (Auth::check() && Auth::user()->role_id == 4)
+            @livewire('admin-sidebar')
+            @vite('resources/css/admin.sidebar.css')
+        @endif
         <main class="Main">
             @yield('content')
         </main>
