@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Proposal;
 use Illuminate\Http\Request;
 
-class ProposalController extends Controller
+class QualificationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,25 +25,9 @@ class ProposalController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $sumissionId)
+    public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'line' => 'required',
-            'leader' => 'required',
-            'description' => 'required',
-        ]);
-        Proposal::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'line' => $request->line,
-            'leader' => $request->leader,
-            'advisor' => $request->advisor,
-            'program' => $request->program,
-            'semester' => $request->semester,
-            'submission_id' => $sumissionId,
-        ]);
-        return back()->with('success', 'Propuesta enviada con éxito');
+        //
     }
 
     /**

@@ -21,15 +21,9 @@ return new class extends Migration
             $table->string('leader');
             $table->string('program');
             $table->integer('semester');
-            $table->integer('status');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
 
-            $table->bigInteger('team_id')->unsigned();
-            $table->foreign("team_id")->references("id")->on("teams");
-
-            $table->bigInteger('activity_id')->unsigned();
-            $table->foreign("activity_id")->references("id")->on("activities");
+            $table->bigInteger('submission_id')->unsigned();
+            $table->foreign("submission_id")->references("id")->on("submissions");
         });
     }
 

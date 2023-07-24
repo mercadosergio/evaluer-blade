@@ -13,6 +13,7 @@ use App\Models\InvestigationLine;
 use App\Models\Program;
 use App\Models\Role;
 use App\Models\Student;
+use App\Models\Submission;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -99,20 +100,20 @@ class PageController extends Controller
 
     public function advisor_activity(string $id)
     {
-        $activity = Activity::with('proposals')->findOrFail($id);
+        $activity = Activity::with('submissions.proposal')->findOrFail($id);
         return view('advisor.activity', compact('activity'));
     }
 
     public function student_activity(string $id)
     {
         $activity = Activity::findOrFail($id);
-        $user = User::with('student.teams')->find(Auth::id());
+        $user = User::with('student.teams.students')->find(Auth::id());
         $team = $user->student->teams[0];
 
-        $draft = Draft::where('team_id', $team->id)
+        $submission = Submission::where('team_id', $team->id)
             ->where('activity_id', $activity->id)
             ->first();
-        return view('student.activity', compact('activity', 'team', 'draft'));
+        return view('student.activity', compact('activity', 'team', 'submission'));
     }
 
     public function team($courseId)

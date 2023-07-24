@@ -28,4 +28,9 @@ class Course extends Model
     {
         return $this->belongsTo(Advisor::class);
     }
+
+    public function period()
+    {
+        return $this->belongsTo(Period::class, 'period_id');
+    }
 }

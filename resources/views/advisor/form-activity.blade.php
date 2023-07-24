@@ -7,7 +7,7 @@
         <h1 class="Title-h1">Nueva actividad</h1>
     </div>
 
-    <form method="POST" action="{{ route('activities.store') }}" class="form" autocomplete="off" id="form-activity">
+    <form method="POST" action="{{ route('store.activity') }}" class="form" autocomplete="off" id="form-activity">
         @csrf
         <div class="Activity">
             <div class="Formulario-div">

@@ -24,14 +24,9 @@ class Activity extends Model
     {
         return $this->belongsTo(Course::class, 'course_id');
     }
-
-    public function drafts()
+    
+    public function submissions()
     {
-        return $this->hasMany(Draft::class, 'activity_id');
-    }
-
-    public function proposals()
-    {
-        return $this->hasMany(Proposal::class, 'activity_id');
+        return $this->hasMany(Submission::class, 'activity_id');
     }
 }

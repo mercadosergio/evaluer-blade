@@ -16,6 +16,7 @@ class Student extends Model
         'dni',
         'program',
         'semester',
+        'entered_at',
         'user_id',
     ];
 
@@ -33,7 +34,7 @@ class Student extends Model
     {
         return $this->belongsToMany(Team::class, 'students_teams', 'student_id', 'team_id');
     }
-    
+
     public function program()
     {
         return $this->belongsTo(Program::class);

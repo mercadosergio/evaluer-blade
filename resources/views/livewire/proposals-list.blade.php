@@ -1,5 +1,5 @@
 <div>
-    @foreach ($activity->proposals as $proposal)
+    @foreach ($activity->submissions as $submission->proposal)
         <table>
             <thead>
                 <tr>
@@ -14,18 +14,18 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $proposal->id }}</td>
-                    <td>{{ $proposal->title }}</td>
-                    <td>{{ $proposal->program }}</td>
-                    <td>{{ $proposal->semester }}</td>
-                    <td>{{ $proposal->created_at }}</td>
-                    <td>{{ $proposal->status }}</td>
+                    <td>{{ $submission->proposal->id }}</td>
+                    <td>{{ $submission->proposal->title }}</td>
+                    <td>{{ $submission->proposal->program }}</td>
+                    <td>{{ $submission->proposal->semester }}</td>
+                    <td>{{ $submission->created_at }}</td>
+                    <td>{{ $submission->progress->name }}</td>
                     <td>
                         <button class="Preview-button" title="Ver" type="button" wire:click="$emit('openModal')">
                             <i class="bi bi-eye-fill"></i>
                         </button>
                     </td>
-                    @livewire('proposal-modal', ['proposal' => $proposal])
+                    @livewire('proposal-modal', ['submission' => $submission])
                 </tr>
             </tbody>
         </table>

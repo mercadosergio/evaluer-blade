@@ -14,6 +14,7 @@ class ProposalsList extends Component
         $this->activity = $activity;
     }
 
+
     public function showModal()
     {
         $this->openModal = true;

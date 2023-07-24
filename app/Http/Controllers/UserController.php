@@ -72,8 +72,8 @@ class UserController extends Controller
                 'dni' => $request->dni,
                 'program' => $request->program,
                 'semester' => 5,
+                'entered_at' => date('Y'),
                 'user_id' => $user->id,
-
             ]);
         } elseif ($request->role_id == 2) {
             Advisor::create([

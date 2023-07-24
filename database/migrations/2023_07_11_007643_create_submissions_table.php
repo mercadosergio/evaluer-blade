@@ -12,15 +12,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('drafts', function (Blueprint $table) {
+        Schema::create('submissions', function (Blueprint $table) {
             $table->id();
-            $table->string('path');
-            $table->string('filename');
+
+            $table->bigInteger('progress_status_id')->unsigned();
+            $table->foreign("progress_status_id")->references("id")->on("progress_statuses");
+
+            $table->bigInteger('team_id')->unsigned();
+            $table->foreign("team_id")->references("id")->on("teams");
+
+            $table->bigInteger('activity_id')->unsigned();
+            $table->foreign("activity_id")->references("id")->on("activities");
+
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
-
-            $table->bigInteger('submission_id')->unsigned();
-            $table->foreign("submission_id")->references("id")->on("submissions");
         });
     }
 
@@ -29,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('drafts');
+        Schema::dropIfExists('submissions');
     }
 };

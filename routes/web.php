@@ -6,8 +6,8 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProgramController;
-use App\Http\Controllers\ProposalController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubmissionController;
 use App\Http\Controllers\UserController;
 use App\Models\Program;
 use Illuminate\Support\Facades\Route;
@@ -31,23 +31,24 @@ Route::prefix('student')->middleware('role:1')->group(function () {
 });
 
 Route::prefix('advisor')->middleware('role:2')->group(function () {
-    Route::get('/',                [PageController::class, 'advisor'])->name('advisor.dashboard');
-    Route::get('/courses/{id}',    [CourseController::class, 'show'])->name('courses.show');
-    Route::get('/activities/{id}', [PageController::class, 'advisor_activity'])->name('advisor.activity');
+    Route::get('/',                                  [PageController::class, 'advisor'])->name('advisor.dashboard');
+    Route::get('/courses/{id}',                      [CourseController::class, 'show'])->name('courses.show');
+    Route::get('/activities/{id}',                   [PageController::class, 'advisor_activity'])->name('advisor.activity');
+    Route::get('/course/{courseId}/activities/form', [ActivityController::class, 'create'])->name('create.activity');
 });
 
 Route::prefix('dean')->middleware('role:3')->group(function () {
     Route::get('/', [PageController::class, 'dean'])->name('dean.dashboard');
 });
 
-Route::post('/users', [UserController::class, 'register'])->name('users.register');
-Route::post('/activities', [ActivityController::class, 'store'])->name('activities.store');
-Route::post('/proposals', [ProposalController::class, 'store'])->name('store.proposal');
+Route::post('/users',       [UserController::class, 'register'])->name('users.register');
+Route::post('/activities',  [ActivityController::class, 'store'])->name('store.activity');
+Route::post('/submissions', [SubmissionController::class, 'store'])->name('store.submission');
 
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
-Route::get('/autocomplete', [ActivityController::class, 'search']);
-Route::get('/radio-semesters', [ProgramController::class, 'getRadioButtons']);
+Route::get('/autocomplete',         [ActivityController::class, 'search']);
+Route::get('/radio-semesters',      [ProgramController::class, 'getRadioButtons']);
 Route::get('/autocomplete-student', [StudentController::class, 'search']);
 
 // Route::post('/activities', [ActivityController::class, 'store'])->name('store.team');

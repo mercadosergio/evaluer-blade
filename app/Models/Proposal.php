@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Proposal extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $fillable = [
         'title',
@@ -17,13 +18,11 @@ class Proposal extends Model
         'advisor',
         'program',
         'semester',
-        'status',
-        'team_id',
-        'activity_id',
+        'submission_id',
     ];
 
-    public function activity()
+    public function submission()
     {
-        return $this->belongsTo(Activity::class, 'activity_id');
+        return $this->belongsTo(Submission::class, 'submission_id');
     }
 }

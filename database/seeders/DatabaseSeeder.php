@@ -10,7 +10,9 @@ use App\Models\Advisor;
 use App\Models\Course;
 use App\Models\CoursesStudent;
 use App\Models\InvestigationLine;
+use App\Models\Period;
 use App\Models\Program;
+use App\Models\ProgressStatus;
 use App\Models\Role;
 use App\Models\Student;
 use App\Models\StudentsTeam;
@@ -117,6 +119,43 @@ class DatabaseSeeder extends Seeder
             'typename' => 'Entregable de proyecto',
         ]);
 
+        ProgressStatus::create([
+            'id' => 1,
+            'name' => 'Enviado',
+            'description' => '',
+        ]);
+
+        ProgressStatus::create([
+            'id' => 2,
+            'name' => 'En revisiòn',
+            'description' => '',
+        ]);
+
+        ProgressStatus::create([
+            'id' => 3,
+            'name' => 'Calificado',
+            'description' => '',
+        ]);
+
+        ProgressStatus::create([
+            'id' => 4,
+            'name' => 'Archivado',
+            'description' => '',
+        ]);
+
+        ProgressStatus::create([
+            'id' => 5,
+            'name' => 'Evaluado',
+            'description' => '',
+        ]);
+
+        Period::create([
+            'year' => '2023',
+            'term' => 2,
+            'start_at' => strtotime(time()),
+            'end_at' => strtotime(time()),
+        ]);
+
         User::create([
             'id' => 1,
             'email' => 'jose@mail.com',
@@ -204,6 +243,7 @@ class DatabaseSeeder extends Seeder
             'program' => 'INGENIERÍA INFORMÁTICA',
             'semester' => 8,
             'advisor_id' => 1,
+            'period_id' => 1,
         ]);
 
         CoursesStudent::create([

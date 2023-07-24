@@ -12,21 +12,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('courses', function (Blueprint $table) {
+        Schema::create('qualifications', function (Blueprint $table) {
             $table->id();
-            $table->string('subject');
-            $table->string('description', 700);
-            $table->string('program');
-            $table->integer('semester');
+            $table->string('grade');
+            $table->string('comments')->nullable();
+            $table->bigInteger('submission_id')->unsigned();
+            $table->foreign("submission_id")->references("id")->on("submissions");
 
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
-
-            $table->bigInteger('advisor_id')->unsigned();
-            $table->foreign("advisor_id")->references("id")->on("advisors");
-
-            $table->bigInteger('period_id')->unsigned();
-            $table->foreign("period_id")->references("id")->on("periods");
         });
     }
 
@@ -35,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('courses');
+        Schema::dropIfExists('qualifications');
     }
 };

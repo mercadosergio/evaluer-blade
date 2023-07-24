@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('second_lastname');
             $table->string('dni');
             $table->string('semester');
+            $table->year('entered_at')->default(DB::raw('YEAR(CURRENT_DATE)'));
 
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
