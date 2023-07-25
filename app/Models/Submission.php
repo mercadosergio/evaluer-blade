@@ -40,8 +40,8 @@ class Submission extends Model
         return $this->hasOne(Draft::class, 'submission_id');
     }
 
-    public function qualification()
+    public function grade()
     {
-        return $this->hasOne(Qualification::class, 'submission_id');
+        return $this->hasOne(Grade::class, 'submission_id');
     }
 }

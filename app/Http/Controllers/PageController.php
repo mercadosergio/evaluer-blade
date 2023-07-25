@@ -7,9 +7,9 @@ use App\Models\Activity;
 use App\Models\Admin;
 use App\Models\Advisor;
 use App\Models\Course;
-use App\Models\Dean;
+use App\Models\Coordinator;
 use App\Models\Draft;
-use App\Models\InvestigationLine;
+use App\Models\ResearchArea;
 use App\Models\Program;
 use App\Models\Role;
 use App\Models\Student;
@@ -40,7 +40,7 @@ class PageController extends Controller
                     return redirect()->route('advisor.dashboard');
                     break;
                 case 3:
-                    return redirect()->route('dean.dashboard');
+                    return redirect()->route('coordinator.dashboard');
                     break;
                 case 4:
                     return redirect()->route('admin');
@@ -76,20 +76,20 @@ class PageController extends Controller
         return view('advisor.index', compact('courses', 'advisor'));
     }
 
-    public function dean()
+    public function coordinator()
     {
-        $program = Program::findOrFail(Auth::user()->dean->program_id);
-        return view('dean.index', compact('program'));
+        $program = Program::findOrFail(Auth::user()->coordinator->program_id);
+        return view('coordinator.index', compact('program'));
     }
 
     public function users()
     {
         $students = Student::with('user')->get();
         $advisors = Advisor::with('user')->get();
-        $deans = Dean::with('user')->get();
+        $coordinators = Coordinator::with('user')->get();
         // $admins = Admin::with('user')->get();
 
-        return view('users.show', compact('students', 'advisors', 'deans'));
+        return view('users.show', compact('students', 'advisors', 'coordinators'));
     }
 
     public function register()
@@ -129,7 +129,7 @@ class PageController extends Controller
         $user = User::with('student.program', 'student.teams.students', 'student.courses.advisor')->find(Auth::id());
         $student = $user->student;
         $members = $student->teams[0]->students;
-        $lines = InvestigationLine::where('program_id', $user->student->program->id)->get();
+        $lines = ResearchArea::where('program_id', $user->student->program->id)->get();
         // dd($student->courses[0]->advisor);
         return view('proposals.form', compact('activityId', 'student', 'lines', 'members'));
     }

@@ -38,7 +38,7 @@ class LoginController extends Controller
                 break;
 
             case 3:
-                return redirect()->route('dean.dashboard');
+                return redirect()->route('coordinator.dashboard');
                 break;
 
             case 4:

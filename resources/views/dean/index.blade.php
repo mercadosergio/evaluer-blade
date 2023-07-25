@@ -54,5 +54,5 @@
 @endsection
 
 @push('styles')
-    @vite('resources/css/dean.dashboard.css')
+    @vite('resources/css/coordinator.dashboard.css')
 @endpush

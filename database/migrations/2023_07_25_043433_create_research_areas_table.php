@@ -7,9 +7,12 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::create('investigation_lines', function (Blueprint $table) {
+        Schema::create('research_areas', function (Blueprint $table) {
             $table->id();
             $table->string('line');
             $table->string('objectives');
@@ -23,8 +26,11 @@ return new class extends Migration
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('investigation_lines');
+        Schema::dropIfExists('research_areas');
     }
 };

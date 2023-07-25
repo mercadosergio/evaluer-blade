@@ -7,10 +7,10 @@ namespace Database\Seeders;
 use App\Models\ActivityType;
 use App\Models\Admin;
 use App\Models\Advisor;
+use App\Models\Coordinator;
 use App\Models\Course;
 use App\Models\CoursesStudent;
-use App\Models\Dean;
-use App\Models\InvestigationLine;
+use App\Models\ResearchArea;
 use App\Models\Period;
 use App\Models\Program;
 use App\Models\ProgressStatus;
@@ -82,7 +82,7 @@ class DatabaseSeeder extends Seeder
             'status' => 1
         ]);
 
-        InvestigationLine::create([
+        ResearchArea::create([
             'id' => 1,
             'line' => 'ANÁLISIS, DISEÑO, DESARROLLO E IMPLEMENTACIÓN DE APLICACIONES MÓVILES',
             'objectives' => 'Implementar Aplicaciones Móviles que brinden solución a las necesidades de los usuarios.',
@@ -90,7 +90,7 @@ class DatabaseSeeder extends Seeder
             'program_id' => 1,
             'created_at' => '2023-07-02 18:31:32',
         ]);
-        InvestigationLine::create([
+        ResearchArea::create([
             'id' => 2,
             'line' => 'ANÁLISIS, DISEÑO, DESARROLLO E IMPLEMENTACIÓN DE APLICACIONES MÓVILES',
             'objectives' => 'Implementar Aplicaciones Móviles que brinden solución a las necesidades de los usuarios.',
@@ -98,7 +98,7 @@ class DatabaseSeeder extends Seeder
             'program_id' => 1,
             'created_at' => '2023-07-02 18:31:32',
         ]);
-        InvestigationLine::create([
+        ResearchArea::create([
             'id' => 3,
             'line' => 'ANÁLISIS, DISEÑO, DESARROLLO E IMPLEMENTACIÓN DE SOFTWARE WEB',
             'objectives' => 'Brindar soluciones informáticas, destinadas a automatizar procesos mediante software a la medida.',
@@ -247,7 +247,7 @@ class DatabaseSeeder extends Seeder
             'user_id' => 3,
         ]);
 
-        Dean::create([
+        Coordinator::create([
             'id' => 1,
             'names' => 'Mauricio',
             'first_lastname' => 'Suarez',

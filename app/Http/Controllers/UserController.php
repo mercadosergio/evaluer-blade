@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Advisor;
-use App\Models\Dean;
+use App\Models\Coordinator;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -85,7 +85,7 @@ class UserController extends Controller
                 'user_id' => $user->id,
             ]);
         } elseif ($request->role_id == 3) {
-            Dean::create([
+            Coordinator::create([
                 'names' => $request->name,
                 'first_lastname' => $request->first_lastname,
                 'second_lastname' => $request->second_lastname,

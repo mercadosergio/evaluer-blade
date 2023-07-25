@@ -37,8 +37,8 @@ Route::prefix('advisor')->middleware('role:2')->group(function () {
     Route::get('/course/{courseId}/activities/form', [ActivityController::class, 'create'])->name('create.activity');
 });
 
-Route::prefix('dean')->middleware('role:3')->group(function () {
-    Route::get('/', [PageController::class, 'dean'])->name('dean.dashboard');
+Route::prefix('coordinator')->middleware('role:3')->group(function () {
+    Route::get('/', [PageController::class, 'coordinator'])->name('coordinator.dashboard');
 });
 
 Route::post('/users',       [UserController::class, 'register'])->name('users.register');

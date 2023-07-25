@@ -130,22 +130,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($deans as $dean)
-                                @if ($dean->user->role_id === 3)
+                            @foreach ($coordinators as $coordinator)
+                                @if ($coordinator->user->role_id === 3)
                                     <tr>
-                                        <td><?= $dean->id ?></td>
+                                        <td><?= $coordinator->id ?></td>
                                         <td>
-                                            <img src="{{ asset('avatar/' . $dean->user->avatar) }}" width="60"
+                                            <img src="{{ asset('avatar/' . $coordinator->user->avatar) }}" width="60"
                                                 height="60"
-                                                alt="{{ $dean->names }} {{ $dean->first_lastname }} {{ $dean->second_lastname }}">
+                                                alt="{{ $coordinator->names }} {{ $coordinator->first_lastname }} {{ $coordinator->second_lastname }}">
                                         </td>
-                                        <td>{{ $dean->advisor->dni }}</td>
-                                        <td>{{ $dean->advisor->names }}</td>
-                                        <td>{{ $dean->advisor->first_lastname }}</td>
-                                        <td>{{ $dean->advisor->second_lastname }}</td>
+                                        <td>{{ $coordinator->advisor->dni }}</td>
+                                        <td>{{ $coordinator->advisor->names }}</td>
+                                        <td>{{ $coordinator->advisor->first_lastname }}</td>
+                                        <td>{{ $coordinator->advisor->second_lastname }}</td>
                                         <td>
                                             <span
-                                                class="badge text-bg-{{ $dean->user->status == 1 ? 'success' : 'danger' }}">{{ $dean->user->status == 1 ? 'Activo' : 'Inactivo' }}</span>
+                                                class="badge text-bg-{{ $coordinator->user->status == 1 ? 'success' : 'danger' }}">{{ $coordinator->user->status == 1 ? 'Activo' : 'Inactivo' }}</span>
                                         </td>
                                         <td>
                                             <button type='button' title='Editar' class='Edit-button' id="edit-modal"><i

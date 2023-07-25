@@ -19,9 +19,9 @@ class Program extends Model
         return $this->hasMany(Advisor::class);
     }
 
-    public function deans()
+    public function coordinators()
     {
-        return $this->hasMany(Dean::class);
+        return $this->hasMany(Coordinator::class);
     }
 
     public function lines()
