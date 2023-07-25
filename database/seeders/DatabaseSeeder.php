@@ -9,6 +9,7 @@ use App\Models\Admin;
 use App\Models\Advisor;
 use App\Models\Course;
 use App\Models\CoursesStudent;
+use App\Models\Dean;
 use App\Models\InvestigationLine;
 use App\Models\Period;
 use App\Models\Program;
@@ -196,6 +197,16 @@ class DatabaseSeeder extends Seeder
             'status' => 1,
             'role_id' => 4,
         ]);
+        User::create([
+            'id' => 5,
+            'email' => 'mauricio@mail.com',
+            'username' => '1234567892',
+            'password' => bcrypt('1234567892'),
+            'name' => 'Mauricio',
+            'avatar' => 'default.png',
+            'status' => 1,
+            'role_id' => 3,
+        ]);
 
         Admin::create([
             'id' => 1,
@@ -234,6 +245,16 @@ class DatabaseSeeder extends Seeder
             'dni' => '1234567891',
             'program_id' => 1,
             'user_id' => 3,
+        ]);
+
+        Dean::create([
+            'id' => 1,
+            'names' => 'Mauricio',
+            'first_lastname' => 'Suarez',
+            'second_lastname' => 'Perez',
+            'dni' => '1234567892',
+            'program_id' => 1,
+            'user_id' => 5,
         ]);
 
         Course::create([
