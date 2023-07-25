@@ -1,7 +1,7 @@
 @extends('layout.app')
+@section('title', 'Inicio')
 
 @section('content')
-
 <section class="StudentModules">
     
     @if ($user->student && $user->student->courses->count() > 0)
@@ -105,7 +105,6 @@
         </div>
     </details>
 </section>
-
 @endsection
 
 @push('styles')

@@ -27,4 +27,9 @@ class Advisor extends Model
     {
         return $this->hasMany(Course::class, 'advisor_id');
     }
+
+    public function program()
+    {
+        return $this->belongsTo(Program::class);
+    }
 }

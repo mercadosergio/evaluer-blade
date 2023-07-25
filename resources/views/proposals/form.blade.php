@@ -1,4 +1,5 @@
 @extends('layout.app')
+@section('title', 'Formulario de propuesta')
 
 @section('content')
 

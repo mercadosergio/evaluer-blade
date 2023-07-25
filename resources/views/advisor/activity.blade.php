@@ -1,5 +1,7 @@
 @extends('layout.app')
 
+@section('title', 'Detalles de la ctividad')
+
 @section('content')
     <section class="View-section">
         <div class="Title">
@@ -90,6 +92,7 @@
                         <span class='center'><em>No hay entregas disponibles.</em></span>
                     @endif
                 @break
+
             @endswitch
         </div>
     </section>

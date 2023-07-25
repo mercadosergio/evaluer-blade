@@ -17,4 +17,9 @@ class Dean extends Model
         'program',
         'user_id',
     ];
+
+    public function program()
+    {
+        return $this->belongsTo(Program::class);
+    }
 }

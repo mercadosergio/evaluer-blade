@@ -1,7 +1,10 @@
+.General {
+    width: 90%;
+    margin: auto;
+}
+
 .Title {
     display: flex;
-    align-items: center;
-    justify-content: center;
     margin: 10px auto;
     border-bottom: #bebebe 2px solid;
     border-radius: 2px;
@@ -9,6 +12,25 @@
 }
 
 .Title-h1 {
+    font-weight: 600;
+}
+
+.Layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.Module-div {
+    display: flex;
+    flex-direction: column;
+    padding: 7px 10px;
+    background-color: #fff;
+}
+
+.Module-div span {
+    padding-bottom: 3px;
+    border-bottom: 1px solid #000;
     font-weight: 600;
 }
 

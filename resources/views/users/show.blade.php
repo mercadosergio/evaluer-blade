@@ -1,4 +1,5 @@
 @extends('layout.app')
+@section('title', 'Usuarios')
 
 @section('content')
     <section class="Indice">

@@ -1,5 +1,7 @@
 @extends('layout.app')
 
+@section('title', 'Curso - '. $course->subject)
+
 @section('content')
 
     <div class="General">
@@ -9,7 +11,7 @@
         <div class="Layout">
             <section class="Courses-section">
                 <div class="prog">
-                    <p>{{ $course->program }} - </p>
+                    <p>{{ $course->program->name }} - </p>
                     <p>{{ $course->semester }}</p>
                 </div>
                 <p class="desc">{{ $course->description }}</p>

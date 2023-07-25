@@ -1,5 +1,7 @@
 @extends('layout.app')
 
+@section('title', 'Programas académicos')
+
 @section('content')
     <section class="Indice">
         <h1>Programas</h1>

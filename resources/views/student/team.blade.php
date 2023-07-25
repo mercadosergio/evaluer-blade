@@ -1,5 +1,7 @@
 @extends('layout.app')
 
+@section('title', 'Equipo de trabajo')
+
 @section('content')
 
 <section class="Main-section">

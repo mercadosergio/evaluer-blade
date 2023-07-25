@@ -1,4 +1,5 @@
 @extends('layout.app')
+@section('title', 'Asesor de investigación')
 
 @section('content')
 
@@ -13,7 +14,7 @@
                 @foreach ($courses as $course)
                     <a class="Course-link" href="{{ route('courses.show', ['id' => $course->id]) }}">
                         <div class="Course-div">
-                            <p class="Course-info-p">{{ $course->program }} Semestre: {{ $course->semester }}</p>
+                            <p class="Course-info-p">{{ $course->program->name }} Semestre: {{ $course->semester }}</p>
                             <h3 class="Course-subjet-h3">{{ $course->subject }}</h3>
                         </div>
                     </a>

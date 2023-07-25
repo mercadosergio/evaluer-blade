@@ -14,8 +14,23 @@ class Program extends Model
         return $this->hasMany(Student::class);
     }
 
+    public function advisors()
+    {
+        return $this->hasMany(Advisor::class);
+    }
+
+    public function deans()
+    {
+        return $this->hasMany(Dean::class);
+    }
+
     public function lines()
     {
         return $this->hasMany(Line::class);
+    }
+
+    public function courses()
+    {
+        return $this->hasMany(Course::class, 'program_id');
     }
 }

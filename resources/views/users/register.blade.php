@@ -1,4 +1,5 @@
 @extends('layout.app')
+@section('title', 'Registrar usuario')
 
 @section('content')
     <form action="{{ route('users.register') }}" method="POST" id="">

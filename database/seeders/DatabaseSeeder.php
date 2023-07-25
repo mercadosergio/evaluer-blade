@@ -261,7 +261,7 @@ class DatabaseSeeder extends Seeder
             'id' => 1,
             'subject' => 'Seminario de grado 1',
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lacinia, felis ut molestie euismod, lacus dui sollicitudin sem, eget fringilla lacus arcu ut purus. In in aliquam arcu. Nullam scelerisque varius luctus. Aliquam erat volutpat. Suspendisse nisl libero, feugiat eu ligula nec, ultricies aliquet eros. Donec non diam pretium, finibus quam eu, efficitur ante. Nunc malesuada eget ante at iaculis. Sed scelerisque mi faucibus nisl maximus, at luctus nisi laoreet. Sed a ornare velit. Donec a purus nunc. Ut eu odio eget libero condimentum ultricies in vel ligula.',
-            'program' => 'INGENIERÍA INFORMÁTICA',
+            'program_id' => 1,
             'semester' => 8,
             'advisor_id' => 1,
             'period_id' => 1,

@@ -1,7 +1,7 @@
 @extends('layout.app')
+@section('title', 'Detalles de la actividad')
 
 @section('content')
-
     <section class="View-section">
         <div class="Title">
             <i class="bi bi-list-check"></i>
@@ -131,6 +131,7 @@
 
                 @default
                 @break
+
             @endswitch
         </div>
     </section>

@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Home</title>
+    <title>Home | Evaluer</title>
 
     @vite(['resources/css/home.css'])
 </head>
@@ -17,7 +17,7 @@
     <header class="Header">
         <nav class="Header-nav">
             <div class="Header-container_logo">
-                <img src="{{ asset('img/aunar-logo-2.png')}}" class="logo-aunar">
+                <img src="{{ asset('img/aunar-logo-2.png') }}" class="logo-aunar">
                 <a class="navbar-brand" href="home">
                     <img src="{{ asset('img/evaluer-logo-1.png') }}" class="logo-evaluer">
                 </a>
@@ -47,13 +47,15 @@
                     <label class="Login-label">Usuario/Email</label>
 
                     <div class="form-input">
-                        <input class="Login-input" type="text" require placeholder="Ingrese su usuario" name="username">
+                        <input class="Login-input" type="text" require placeholder="Ingrese su usuario"
+                            name="username">
                         <i class="Login-i fa-user"></i>
                     </div>
 
                     <label class="Login-label">Contraseña</label>
                     <div class="form-input">
-                        <input class="Login-input" type="password" require placeholder="Ingrese su contraseña" name="password">
+                        <input class="Login-input" type="password" require placeholder="Ingrese su contraseña"
+                            name="password">
                         <i class="Login-i fa-unlock-keyhole"></i>
                     </div>
                     <button class="Login-button" type="submit" name="login">Iniciar sesión</button>
@@ -111,11 +113,13 @@
                             <h3 class="Footer-h3 team-title">Equipo de desarrollo</h3>
                             <div class="Footer-div">
                                 <label>Sergio Mercado</label>
-                                <img class="Footer-img" width="100" src="{{ asset('img/foto-sergio.jpg') }}" alt="">
+                                <img class="Footer-img" width="100" src="{{ asset('img/foto-sergio.jpg') }}"
+                                    alt="">
                             </div>
                             <div class="Footer-div">
                                 <label>Dager Lopez</label>
-                                <img class="Footer-img" width="100" src="{{ asset('img/foto-dager.png') }}" alt="">
+                                <img class="Footer-img" width="100" src="{{ asset('img/foto-dager.png') }}"
+                                    alt="">
                             </div>
                         </section>
                     </div>

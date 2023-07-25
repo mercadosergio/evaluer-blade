@@ -33,4 +33,9 @@ class Course extends Model
     {
         return $this->belongsTo(Period::class, 'period_id');
     }
+
+    public function program()
+    {
+        return $this->belongsTo(Program::class, 'program_id');
+    }
 }

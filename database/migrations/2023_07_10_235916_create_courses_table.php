@@ -16,11 +16,13 @@ return new class extends Migration
             $table->id();
             $table->string('subject');
             $table->string('description', 700);
-            $table->string('program');
             $table->integer('semester');
 
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+
+            $table->bigInteger('program_id')->unsigned();
+            $table->foreign("program_id")->references("id")->on("programs");
 
             $table->bigInteger('advisor_id')->unsigned();
             $table->foreign("advisor_id")->references("id")->on("advisors");

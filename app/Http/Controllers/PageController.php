@@ -78,7 +78,8 @@ class PageController extends Controller
 
     public function dean()
     {
-        return view('dean.index');
+        $program = Program::findOrFail(Auth::user()->dean->program_id);
+        return view('dean.index', compact('program'));
     }
 
     public function users()
