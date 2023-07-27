@@ -59,8 +59,8 @@ class PageController extends Controller
     public function student()
     {
         $user = User::with('student.courses')->find(Auth::id());
-
-        return view('student.index', compact('user'));
+        $course = $user->student->courses[0];
+        return view('student.index', compact('user', 'course'));
     }
 
     public function advisor()

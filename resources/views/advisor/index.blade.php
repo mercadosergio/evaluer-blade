@@ -37,15 +37,20 @@
             </div>
 
             <div class="Post-info">
-                <button class="drop-menu" type="button" data-bs-toggle="dropdown" aria-expanded="false"">
+                <button class="drop-menu" type="button" id="menu-button" aria-expanded="true" aria-haspopup="true">
                     <i class=" bi bi-three-dots-vertical"></i>
                 </button>
-
-                <ul class="dropdown-menu">
-                    <li><button class="dropdown-item Post-button--delete" href="#"><i class="bi bi-trash-fill"></i>
-                            Eliminar</button></li>
-                </ul>
-
+                <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                    <ul>
+                        <li>
+                            <button class="dropdown-item Post-button--delete" href="#">
+                                <i class="bi bi-trash-fill"></i>
+                                Eliminar
+                            </button>
+                        </li>
+                    </ul>
+                </div>
                 <div class="e1"><img class="Post-img--avatar" src="/avatar/default.png" /></div>
                 <div class="e2">Arturo valdez</div>
                 <div class="e3">
