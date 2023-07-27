@@ -3,6 +3,7 @@
 
 @section('content')
     <section class="View-section">
+        @include('components.shared.alerts')
         <div class="Title">
             <i class="bi bi-list-check"></i>
             <h1 class="Title-h1">{{ $activity->title }}</h1>
@@ -27,7 +28,7 @@
         <div class="Form-container">
             @switch($activity->type_id)
                 @case(1)
-                    @if (isset($submission))
+                    @if (isset($submission) && isset($submission->proposal))
                         <div class="Proposal-details">
                             <div class="Proposal-head">
                                 <div class="content-center">
@@ -81,15 +82,16 @@
                 @break
 
                 @case(2)
-                    @if ($draft)
+                    @if (isset($submission) && isset($submission->draft))
                         @if (time() > $activity->available_from)
                             <div class="Sent-info">
-                                <a class="Sent-file-a" href="PAAAAAAAAAAAAAAAAAAAAAAAAAAAT" target="_blank">
+                                <a class="Sent-file-a" href="{{ asset($submission->draft->path) }}" target="_blank"
+                                    target="_blank">
                                     <i class="bi bi-file-earmark-pdf"></i>
                                 </a>
                                 <div>
-                                    <span>{{ $draft->filename }}</span>
-                                    <p>Entregado: {{ date('d/m/Y g:i a', strtotime($draft->created_at)) }}</p>
+                                    <span>{{ $submission->draft->filename }}</span>
+                                    <p>Entregado: {{ date('d/m/Y g:i a', strtotime($submission->draft->created_at)) }}</p>
                                 </div>
                             </div>
                         @endif
@@ -100,25 +102,28 @@
                             <div class="Detail">
                                 <p><i class="bi bi-file-arrow-up"></i> Adjuntar entregable en este espacio.</p>
                             </div>
-                            <form method="POST" autocomplete="off" id="draft-form">
+                            <form method="POST" action="{{ route('store.submission') }}" id="draft-form"
+                                enctype="multipart/form-data">
+                                @csrf
                                 <div class="DragDrop-container">
                                     <input {{ time() < $activity->available_from ? 'disabled' : '' }} type="file"
                                         class="upload_hide" id="upload_costum" name="pdf_file">
 
                                     <input type="hidden" value="{{ $activity->id }}" name="activity_id">
+                                    <input type="hidden" value="{{ $activity->type_id }}" name="type_activity_id">
                                     <input type="hidden" value="{{ $team->id }}" name="team_id">
 
                                     <label for="upload_costum" class="upload_label">
                                         <div class="Preview">
                                             <i class="bi bi-file-earmark-text"></i>
                                             <p class="filename"></p>
-                                            <button class="Delete-file-button"><i class="bi bi-x"></i></button>
+                                            <button type="button" class="Delete-file-button"><i class="bi bi-x"></i></button>
                                         </div>
                                         <p class="drag_text">Arrastrar y soltar para cargar archivo</p>
-                                        <button class="Choose-file-button">Escoger archivo</button>
+                                        <button type="button" class="Choose-file-button">Escoger archivo</button>
                                     </label>
                                 </div>
-                                <button type="submit" {{ time() < $activity->available_from ? 'disabled' : '' }}
+                                <button id="send" type="submit" {{ time() < $activity->available_from ? 'disabled' : '' }}
                                     class="Send-button button txt-white back-primary">Enviar</button>
                             </form>
                         @endif
@@ -126,7 +131,53 @@
                 @break
 
                 @case(3)
-                    <div>PROYECYO</div>
+                    @if (isset($submission) && isset($submission->researchProject))
+                        @if (time() > $activity->available_from)
+                            <div class="Sent-info">
+                                <a class="Sent-file-a" href="{{ asset($submission->researchProject->path) }}" target="_blank"
+                                    target="_blank">
+                                    <i class="bi bi-file-earmark-pdf"></i>
+                                </a>
+                                <div>
+                                    <span>{{ $submission->researchProject->filename }}</span>
+                                    <p>Entregado: {{ date('d/m/Y g:i a', strtotime($submission->researchProject->created_at)) }}
+                                    </p>
+                                </div>
+                            </div>
+                        @endif
+                    @else
+                        @if (time() > $activity->available_until)
+                            <span class="center"><em>No se entregó la actividad</em></span>
+                        @else
+                            <div class="Detail">
+                                <p><i class="bi bi-file-arrow-up"></i> Adjuntar entregable en este espacio.</p>
+                            </div>
+                            <form method="POST" action="{{ route('store.submission') }}" id="draft-form"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <div class="DragDrop-container">
+                                    <input {{ time() < $activity->available_from ? 'disabled' : '' }} type="file"
+                                        class="upload_hide" id="upload_costum" name="pdf_file">
+
+                                    <input type="hidden" value="{{ $activity->id }}" name="activity_id">
+                                    <input type="hidden" value="{{ $activity->type_id }}" name="type_activity_id">
+                                    <input type="hidden" value="{{ $team->id }}" name="team_id">
+
+                                    <label for="upload_costum" class="upload_label">
+                                        <div class="Preview">
+                                            <i class="bi bi-file-earmark-text"></i>
+                                            <p class="filename"></p>
+                                            <button type="button" class="Delete-file-button"><i class="bi bi-x"></i></button>
+                                        </div>
+                                        <p class="drag_text">Arrastrar y soltar para cargar archivo</p>
+                                        <button type="button" class="Choose-file-button">Escoger archivo</button>
+                                    </label>
+                                </div>
+                                <button id="send" type="submit" {{ time() < $activity->available_from ? 'disabled' : '' }}
+                                    class="Send-button button txt-white back-primary">Enviar</button>
+                            </form>
+                        @endif
+                    @endif
                 @break
 
                 @default

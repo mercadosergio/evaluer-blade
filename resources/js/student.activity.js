@@ -7,6 +7,7 @@ $('#upload_costum').change(function (event) {
     document.querySelector('.filename').textContent = fileName;
     $('.Delete-file-button').show();
     $('.Choose-file-button').hide();
+    $('.drag_text').hide();
     $('.Preview').show();
 
     $('.Delete-file-button').click(function () {

@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ResearchProject;
+use App\Models\Draft;
 use Illuminate\Http\Request;
 
-class ResearchProjectController extends Controller
+class DraftController extends Controller
 {
 
     public function index()
     {
         //
     }
-
 
     public function create()
     {
@@ -35,17 +34,17 @@ class ResearchProjectController extends Controller
         $newFileName = strtolower(str_replace(' ', '-', $originalName));
         $modifiedFileName = date("d-m-y") . "-" . date("H-m-s") . "-" . $newFileName;
 
-        $directory = storage_path('app/public/files/proyectos_investigación/' . $period);
+        $directory = storage_path('app/public/files/anteproyectos/' . $period);
 
         if (!file_exists($directory)) {
             mkdir($directory, 0755, true);
         }
 
-        $file->storeAs('public/files/proyectos_investigación/' . $period, $modifiedFileName);
-        ResearchProject::create([
+        $file->storeAs('public/files/anteproyectos/' . $period, $modifiedFileName);
+        Draft::create([
             'filename' => $newFileName,
             'submission_id' => $submissionId,
-            'path' => 'storage/files/proyectos_investigación/' . $period . '/' . $modifiedFileName,
+            'path' => 'storage/files/anteproyectos/' . $period . '/' . $modifiedFileName,
         ]);
         return back();
     }

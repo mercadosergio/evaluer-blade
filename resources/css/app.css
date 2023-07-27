@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .Screen {
     min-height: 100vh;
@@ -158,6 +161,7 @@ table {
 .column-3-6 {
     grid-column: 3/6;
 }
+
 .column-3-9 {
     grid-column: 3/9;
 }

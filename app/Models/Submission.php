@@ -40,6 +40,11 @@ class Submission extends Model
         return $this->hasOne(Draft::class, 'submission_id');
     }
 
+    public function researchProject()
+    {
+        return $this->hasOne(ResearchProject::class, 'submission_id');
+    }
+
     public function grade()
     {
         return $this->hasOne(Grade::class, 'submission_id');

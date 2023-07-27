@@ -13,12 +13,10 @@ class SubmissionController extends Controller
         //
     }
 
-
     public function create()
     {
         //
     }
-
 
     public function store(Request $request)
     {
@@ -28,18 +26,24 @@ class SubmissionController extends Controller
             'activity_id' => $request->activity_id,
         ]);
 
-        switch ($request->activity_id) {
+        switch ($request->type_activity_id) {
             case 1:
                 $proposal = new ProposalController();
-                $proposal->store($request, $submission->id);
+                $isProposal = $proposal->store($request, $submission->id);
+                return $isProposal ? redirect()->route('student.activity', ['id' => $request->activity_id])->with('success', 'Propuesta enviada con éxito') : back()->with('error', 'Ocurrió un error al entregar la actividad');
                 break;
             case 2:
+                $draft = new DraftController();
+                $isDraft = $draft->store($request, $submission->id);
+                return $isDraft ? redirect()->route('student.activity', ['id' => $request->activity_id])->with('success', 'Entregable enviado con éxito') : back()->with('error', 'Ocurrió un error al entregar la actividad');
                 break;
             case 3:
+                $project = new ResearchProjectController();
+                $isProject = $project->store($request, $submission->id);
+                return $isProject ? redirect()->route('student.activity', ['id' => $request->activity_id])->with('success', 'Entregable enviado con éxito') : back()->with('error', 'Ocurrió un error al entregar la actividad');
                 break;
         }
     }
-
 
     public function show(string $id)
     {

@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class ResearchProject extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'filename',
+        'path',
+        'submission_id',
+    ];
+
+    public function submission()
+    {
+        return $this->belongsTo(Submission::class, 'submission_id');
+    }
 }

@@ -26,7 +26,7 @@ class ProposalController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $sumissionId)
+    public function store(Request $request, $submissionId)
     {
         $request->validate([
             'title' => 'required',
@@ -42,9 +42,9 @@ class ProposalController extends Controller
             'advisor' => $request->advisor,
             'program' => $request->program,
             'semester' => $request->semester,
-            'submission_id' => $sumissionId,
+            'submission_id' => $submissionId,
         ]);
-        return back()->with('success', 'Propuesta enviada con éxito');
+        return back();
     }
 
     /**
