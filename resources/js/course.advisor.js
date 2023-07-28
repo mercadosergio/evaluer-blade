@@ -15,3 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
         newPost.style.display = 'block';
     });
 });
+
+ClassicEditor
+    .create(document.querySelector('#editor'))
+    .catch(error => {
+        console.error(error);
+    });

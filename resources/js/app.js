@@ -1,5 +1,13 @@
 import './bootstrap';
 
+import Alpine from 'alpinejs';
+import focus from '@alpinejs/focus';
+window.Alpine = Alpine;
+
+Alpine.plugin(focus);
+
+Alpine.start();
+
 const fadeOutElements = document.querySelectorAll('.fade-out');
 const alert = document.querySelector('.fade-out');
 const closeButton = document.querySelector('#close-alert');

@@ -31,15 +31,16 @@ class PostController extends Controller
     {
         $request->validate([
             'content' => 'required',
+            'course_id' => 'required',
+            'advisor_id' => 'required',
         ]);
 
         Post::create([
-            'content' => $request->role_id,
-            'names' => $request->names,
-            'avatar' => 'default.png',
-            'user_id' => $request->advisor_id,
+            'content' => $request->content,
+            'course_id' => $request->course_id,
+            'advisor_id' => $request->advisor_id,
         ]);
-        return redirect()->route('posts.index')->with('success', 'Post creado exitosamente');
+        return back()->with('success', 'Material publicado exitosamente');
     }
 
     /**

@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubmissionController;
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',        [PageController::class, 'home'])->name('home');
 Route::post('/login',  [LoginController::class, 'login'])->name('login');
-Route::get('/to-home', [PageController::class, 'dashboard'])->name('dashboard');
+Route::get('/to-home', [PageController::class, 'dashboard'])->name('dashboards');
 
 Route::prefix('admin')->middleware('role:4')->group(function () {
     Route::get('/',               [PageController::class, 'admin'])->name('admin');
@@ -32,7 +33,7 @@ Route::prefix('student')->middleware('role:1')->group(function () {
 
 Route::prefix('advisor')->middleware('role:2')->group(function () {
     Route::get('/',                                  [PageController::class, 'advisor'])->name('advisor.dashboard');
-    Route::get('/courses/{id}',                      [CourseController::class, 'show'])->name('courses.show');
+    Route::get('/courses/{id}',                      [CourseController::class, 'show'])->name('advisor.course');
     Route::get('/activities/{id}',                   [PageController::class, 'advisor_activity'])->name('advisor.activity');
     Route::get('/course/{courseId}/activities/form', [ActivityController::class, 'create'])->name('create.activity');
 });
@@ -44,6 +45,7 @@ Route::prefix('coordinator')->middleware('role:3')->group(function () {
 Route::post('/users',       [UserController::class, 'register'])->name('users.register');
 Route::post('/activities',  [ActivityController::class, 'store'])->name('store.activity');
 Route::post('/submissions', [SubmissionController::class, 'store'])->name('store.submission');
+Route::post('/posts',       [PostController::class, 'store'])->name('store.post');
 
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
@@ -54,3 +56,13 @@ Route::get('/autocomplete-student', [StudentController::class, 'search']);
 // Route::post('/activities', [ActivityController::class, 'store'])->name('store.team');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

@@ -2,7 +2,7 @@
 @section('title', 'Nueva actividad')
 
 @section('content')
-
+    @include('components.shared.alerts')
     <section class="Form-section">
         <div class="Title">
             <h1 class="Title-h1">Nueva actividad</h1>

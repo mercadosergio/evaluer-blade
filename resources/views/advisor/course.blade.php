@@ -1,9 +1,9 @@
 @extends('layout.app')
 
-@section('title', 'Curso - '. $course->subject)
+@section('title', 'Curso - ' . $course->subject)
 
 @section('content')
-
+    @include('components.shared.alerts')
     <div class="General">
         <div class="Title">
             <h1 class="Title-h1">{{ $course->subject }}</h1>
@@ -16,10 +16,10 @@
                 </div>
                 <p class="desc">{{ $course->description }}</p>
             </section>
-            <section class="Activities">
-                <div class="Post-title">
-                    <i class="Post-i bi bi-card-heading"></i>
-                    <h1 class="Post-h1">Actividades</h1>
+            <section class="w-full">
+                <div class="Title">
+                    <i class="bi bi-card-heading"></i>
+                    <h1 class="Title-h1">Actividades</h1>
                     <a class="button txt-white back-success move-right"
                         href="{{ route('create.activity', ['courseId' => $course->id]) }}">Nueva</a>
                 </div>
@@ -46,20 +46,19 @@
                 </ul>
             </section>
 
-            <section class="Post">
-                <div class="Post-title">
-                    <i class="Post-i bi bi-card-heading"></i>
-                    <h1 class="Post-h1">Contenido</h1>
+            <section class="">
+                <div class="Title">
+                    <i class="bi bi-card-heading"></i>
+                    <h1 class="Title-h1">Contenido</h1>
                 </div>
 
                 <div class="Post-content">
                     <button class="Post-button button-active button txt-white back-primary" id="new-post">Publicar un
                         anuncio</button>
-                    <form class="post_form" id="form-post" method="POST">
+                    <form class="post_form" id="form-post" method="POST" action="{{ route('store.post') }}">
                         @csrf
                         <input type="hidden" name="course_id" value="{{ $course->id }}">
-                        <input type="hidden" name="names" value="{{ $course->id }}">
-                        <input type="hidden" name="avatar" value="{{ $course->id }}">
+                        <input type="hidden" name="advisor_id" value="{{ Auth::user()->advisor->id }}">
                         <div class="form-group">
                             <textarea require name="content" class="ckeditor Post-textarea" id="editor"></textarea>
                         </div>
@@ -69,27 +68,39 @@
                 </div>
                 @if ($course->posts->count() > 0)
                     @foreach ($course->posts as $post)
-                        <div class="Post-info">
-                            <button class="drop-menu" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class=" bi bi-three-dots-vertical"></i>
-                            </button>
+                        <div class="Post-info flex flex-col">
+                            <div class="drop-menu">
+                                <x-dropdown align="right" width="48">
+                                    <x-slot name="trigger">
+                                        <button type="button" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                                            <i class=" bi bi-three-dots-vertical"></i>
+                                        </button>
+                                    </x-slot>
 
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item Post-button--delete" href="#"><i
-                                            class="bi bi-trash-fill"></i>
-                                        Eliminar</button></li>
-                            </ul>
-
-                            <div class="e1"><img class="Post-img--avatar"
-                                    src="{{ asset('avatar/' . $post->avatar) }}" /></div>
-                            <div class="e2">{{ $post->names }}</div>
-                            <div class="e3">
-                                <p>{{ $post->created_at }}</p>
+                                    <x-slot name="content">
+                                        <x-dropdown-link href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <i class="bi bi-trash-fill"></i>
+                                            {{ __('Eliminar') }}
+                                        </x-dropdown-link>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </x-slot>
+                                </x-dropdown>
                             </div>
-                            <div class="e4">
-                                <div>
-                                    {!! $post->content !!}
+                            <div class="flex space-x-4">
+                                <img class="Post-img--avatar rounded-full"
+                                    src="{{ asset('avatar/' . $post->advisor->user->avatar) }}" />
+                                <div class="flex flex-col">
+                                    <p class="my-auto font-semibold">{{ $post->advisor->names }}
+                                        {{ $post->advisor->first_lastname }}</p>
+                                    <p class="my-auto">{{ $post->created_at }}</p>
                                 </div>
+                            </div>
+                            <div class="">
+                                {!! $post->content !!}
                             </div>
                         </div>
                     @endforeach
@@ -107,5 +118,6 @@
 @endpush
 
 @push('scripts')
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.1.1/classic/ckeditor.js"></script>
     @vite('resources/js/course.advisor.js')
 @endpush

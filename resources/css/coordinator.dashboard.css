@@ -3,18 +3,6 @@
     margin: auto;
 }
 
-.Title {
-    display: flex;
-    margin: 10px auto;
-    border-bottom: #bebebe 2px solid;
-    border-radius: 2px;
-    padding: 0 0 5px 0;
-}
-
-.Title-h1 {
-    font-weight: 600;
-}
-
 .Layout {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

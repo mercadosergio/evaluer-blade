@@ -39,7 +39,7 @@
                 <!-- Escritorio design -->
                 <div class="Header-container_logo desktop-display">
                     <img src="{{ asset('img/aunar-logo-1.png') }}" class="logo-aunar">
-                    <a class="navbar-brand" href="{{ route('dashboard') }}">
+                    <a class="navbar-brand" href="{{ route('dashboards') }}">
                         <img src="{{ asset('img/evaluer-logo-2.png') }}" class="logo-evaluer">
                     </a>
                 </div>
@@ -50,19 +50,41 @@
 
                 @auth
                     <div class="Dropdown">
-                        <input class="dropdown-checkbox" type="checkbox" id="dropdown" name="dropdown" />
-                        <label class="for-dropdown" for="dropdown"> <a class="Avatar" data-dropdown-button>
-                                <img class="Avatar-img" src="{{ asset('avatar/' . auth()->user()->avatar) }}"
-                                    alt="">
-                                <span class="Avatar-span">{{ auth()->user()->name }}</span>
-                            </a></label>
-                        <ul class="Dropdown-ul">
-                            <li class="Dropdown-li"><a class="Dropdown-a dropdown-item" href="/configuracion"><i
-                                        class="Dropdown-i bi bi-gear"></i>Configuración</a></li>
-                            <li class="Dropdown-li"><a class="Dropdown-a dropdown-item text-danger"
-                                    href="{{ route('logout') }}"><i class="Dropdown-i bi bi-box-arrow-left"></i>Cerrar
-                                    sesión</a></li>
-                        </ul>
+                        <x-dropdown align="right" width="48">
+                            <x-slot name="trigger">
+                                <button
+                                    class="flex items-center text-sm font-semibold border-2 border-transparent rounded-full focus:outline-none text-white focus:border-gray-300 transition">
+                                    <img class="h-8 w-8 rounded-full object-cover flex items-center space-x-2"
+                                        src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                    <span class="Avatar-span">{{ Auth::user()->name }}</span>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                    {{ Auth::user()->name }}
+                                </div>
+
+                                <x-dropdown-link class="flex items-center" href="{{ route('profile.show') }}">
+                                    Mi Perfil
+                                </x-dropdown-link>
+
+                                <x-dropdown-link class="flex items-center" href="{{ route('profile.show') }}">
+                                    <i class="Dropdown-i bi bi-gear"></i>
+                                    <span>Configuración</span>
+                                </x-dropdown-link>
+
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <x-dropdown-link class="flex items-center" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                        <i class="Dropdown-i bi bi-box-arrow-left"></i>
+                                        Cerrar Sesión
+                                    </x-dropdown-link>
+                                </form>
+                            </x-slot>
+                        </x-dropdown>
                     </div>
                 @endauth
 

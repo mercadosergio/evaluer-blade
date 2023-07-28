@@ -11,8 +11,17 @@ class Post extends Model
 
     protected $fillable = [
         'content',
-        'names',
-        'avatar',
         'course_id',
+        'advisor_id',
     ];
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class, 'course_id', 'id');
+    }
+
+    public function advisor()
+    {
+        return $this->belongsTo(Advisor::class, 'advisor_id', 'id');
+    }
 }

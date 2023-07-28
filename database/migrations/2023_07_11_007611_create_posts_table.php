@@ -15,14 +15,15 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('content', 800);
-            $table->string('names');
-            $table->string('avatar');
 
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
 
             $table->bigInteger('course_id')->unsigned();
             $table->foreign("course_id")->references("id")->on("courses");
+
+            $table->bigInteger('advisor_id')->unsigned();
+            $table->foreign("advisor_id")->references("id")->on("advisors");
         });
     }
 

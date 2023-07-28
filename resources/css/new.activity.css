@@ -6,19 +6,6 @@
     flex-direction: column;
 }
 
-.Title {
-    display: flex;
-    align-items: center;
-    border-bottom: #bebebe 2px solid;
-    margin: 10px 0;
-    padding: 0 0 5px 0;
-}
-
-.Title-h1 {
-    font-size: 22px;
-    font-weight: 600;
-}
-
 .Activity {
     display: flex;
     flex-direction: column;

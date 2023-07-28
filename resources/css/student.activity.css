@@ -3,24 +3,6 @@
     margin: auto;
 }
 
-.Title {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-}
-
-
-.Title i {
-    font-size: 25px;
-    color: #000;
-    margin-right: 7px;
-}
-
-.Title-h1 {
-    font-size: 22px;
-    font-weight: 600;
-}
-
 .Details-container {
     padding: 20px 40px;
     background: #fff;

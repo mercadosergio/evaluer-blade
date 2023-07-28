@@ -32,4 +32,9 @@ class Advisor extends Model
     {
         return $this->belongsTo(Program::class);
     }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'advisor_id', 'id');
+    }
 }

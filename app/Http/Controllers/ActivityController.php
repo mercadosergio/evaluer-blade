@@ -48,7 +48,7 @@ class ActivityController extends Controller
             'typename' => $request->typename,
             'course_id' => $request->course_id,
         ]);
-        return back()->with('success', 'Actividad publicada exitosamente');
+        return redirect()->route('advisor.course', ['id' => $request->course_id])->with('success', 'Actividad publicada exitosamente');
     }
 
     /**

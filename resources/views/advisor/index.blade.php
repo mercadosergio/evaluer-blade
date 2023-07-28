@@ -2,61 +2,90 @@
 @section('title', 'Asesor de investigación')
 
 @section('content')
-
-    <div class="Content-page">
-        <div class="Title">
-            <i class="Title-i bi bi-columns-gap"></i>
-            <h1 class="Title-h1">{{ __('Titulo') }}</h1>
+    <div class="Content-page grid grid-cols-4 gap-5">
+        <div class="Courses col-span-3">
+            <div class="Title">
+                <i class="Title-i bi bi-columns-gap"></i>
+                <h1 class="Title-h1">{{ __('Cursos') }}</h1>
+            </div>
+            <div class="Courses-layout">
+                @if ($courses && $courses->count() > 0)
+                    @foreach ($courses as $course)
+                        <a class="Course-link" href="{{ route('advisor.course', ['id' => $course->id]) }}">
+                            <div class="Course-div">
+                                <h3 class="Course-h3">{{ $course->subject }}</h3>
+                                <div class="Course-body">
+                                    <p class="Course-program-p">{{ $course->program->name }}</p>
+                                    <p class="Course-semester-p">Semestre: {{ $course->semester }}</p>
+                                    <p class="Course-description-p">{{ $course->description }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
+                @else
+                    <span class="center col-start-1 col-end-3"><em>No estás asociado a ningún curso.</em></span>
+                @endif
+            </div>
         </div>
-
-        <div class="Courses-layout">
-            @if ($courses && $courses->count() > 0)
-                @foreach ($courses as $course)
-                    <a class="Course-link" href="{{ route('courses.show', ['id' => $course->id]) }}">
-                        <div class="Course-div">
-                            <p class="Course-info-p">{{ $course->program->name }} Semestre: {{ $course->semester }}</p>
-                            <h3 class="Course-subjet-h3">{{ $course->subject }}</h3>
+        <div class="Datetimes">
+            <div class="Title">
+                <i class="bi bi-clock"></i>
+                <h1 class="Title-h1">{{ __('Fechas programadas') }}</h1>
+            </div>
+            <div class="flex flex-col bg-white border border-gray-200 rounded-md p-3">
+                @if (isset($totalActivities) && $totalActivities->count() > 0)
+                    @foreach ($totalActivities as $activity)
+                        <div class="">
+                            <span>{{ date('d/m/Y g:i a', $activity->available_until) }}</span>
+                            <p>{{ $activity->title }}</p>
                         </div>
-                    </a>
-                @endforeach
-            @else
-                <span class="center col-start-1 col-end-3"><em>No estás asociado a ningún curso.</em></span>
-            @endif
+                    @endforeach
+                @else
+                    <span class="center"><em>No hay aproximadas</em></span>
+                @endif
+            </div>
         </div>
 
-        <section class="Material-section">
+        <div class="Material-section col-span-2">
             <div class="Title">
                 <i class="bi bi-clock"></i>
                 <h1 class="Title-h1">{{ __('Recientes') }}</h1>
             </div>
-        </section>
-        <section class="Post">
-            <div class="Post-title">
-                <i class="Post-i bi bi-card-heading"></i>
-                <h1 class="Post-h1">Contenido</h1>
+        </div>
+        <div class="Post col-span-2">
+            <div class="Title">
+                <i class="bi bi-card-heading"></i>
+                <h1 class="Title-h1">Contenido</h1>
             </div>
-
-            <div class="Post-info">
-                <button class="drop-menu" type="button" id="menu-button" aria-expanded="true" aria-haspopup="true">
-                    <i class=" bi bi-three-dots-vertical"></i>
-                </button>
-                <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                    role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-                    <ul>
-                        <li>
-                            <button class="dropdown-item Post-button--delete" href="#">
-                                <i class="bi bi-trash-fill"></i>
-                                Eliminar
+            <div class="Post-info flex flex-col">
+                <div class="drop-menu">
+                    <x-dropdown align="right" width="48">
+                        <x-slot name="trigger">
+                            <button type="button" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                                <i class=" bi bi-three-dots-vertical"></i>
                             </button>
-                        </li>
-                    </ul>
+                        </x-slot>
+
+                        <x-slot name="content">
+                            <x-dropdown-link href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="bi bi-trash-fill"></i>
+                                {{ __('Eliminar') }}
+                            </x-dropdown-link>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </x-slot>
+                    </x-dropdown>
                 </div>
-                <div class="e1"><img class="Post-img--avatar" src="/avatar/default.png" /></div>
-                <div class="e2">Arturo valdez</div>
-                <div class="e3">
-                    <p>19/02/2022</p>
+                <div class="flex space-x-4">
+                    <img class="Post-img--avatar" src="{{ asset('avatar/default.png') }}" />
+                    <div class="flex flex-col">
+                        <p class="my-auto font-semibold">Arturo valdez</p>
+                        <p class="my-auto">19/02/2022</p>
+                    </div>
                 </div>
-                <div class="e4">
+                <div class="">
                     <p>
                     <h3>Lorem ipsum dolor sit amet</h3>
 
@@ -67,7 +96,7 @@
                     </p>
                 </div>
             </div>
-        </section>
+        </div>
     </div>
 
 @endsection

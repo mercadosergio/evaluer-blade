@@ -14,7 +14,8 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('role_id')->unsigned();
+            $table->foreignId('current_team_id')->nullable();
+            $table->string('profile_photo_path', 2048)->nullable();
 
             $table->string('name');
             $table->string('email')->unique();
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
             $table->integer('status');
 
+            $table->bigInteger('role_id')->unsigned();
             $table->foreign("role_id")->references("id")->on("roles");
         });
     }

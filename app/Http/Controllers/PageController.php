@@ -65,7 +65,7 @@ class PageController extends Controller
 
     public function advisor()
     {
-        $user = User::with('advisor.courses')->find(Auth::id());
+        $user = User::with('advisor.courses.activities')->find(Auth::id());
         $advisor = $user->advisor;
 
         if ($advisor) {
@@ -73,7 +73,18 @@ class PageController extends Controller
         } else {
             $courses = null;
         }
-        return view('advisor.index', compact('courses', 'advisor'));
+
+        $totalActivities = collect();
+        foreach ($user->advisor->courses as $course) {
+            $totalActivities = $totalActivities->merge($course->activities);
+        }
+        $totalActivities = $totalActivities->filter(function ($activity) {
+            return $activity->available_until > strtotime(time());
+        });
+        $totalActivities = $totalActivities->sortBy('available_until');
+        $totalActivities = $totalActivities->take(5);
+
+        return view('advisor.index', compact('courses', 'advisor', 'totalActivities'));
     }
 
     public function coordinator()
