@@ -100,7 +100,8 @@
                 <div class="Button-div">
                     <input type="hidden" name="team_id" value="{{ $student->teams[0]->id }}">
                     <input type="hidden" name="activity_id" value="{{ $activityId }}">
-                    <button type="submit" name="send" class="button txt-white back-primary center">Enviar</button>
+                    <input type="hidden" value="{{ $activity->type_id }}" name="type_activity_id">
+                    <button type="submit" name="send" class="button txt-white bg-primary-100 center">Enviar</button>
                 </div>
             </article>
         </form>

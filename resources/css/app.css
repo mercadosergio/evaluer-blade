@@ -194,6 +194,14 @@ table {
     grid-column: 8/9;
 }
 
+.card-rounded {
+    border: solid 1px #eeeeee;
+}
+
+.static-card-rounded {
+    border: solid 1px #bebebe;
+}
+
 .Title {
     display: flex;
     align-items: center;
@@ -202,6 +210,7 @@ table {
     border-radius: 2px;
     padding: 0 0 5px 0;
     font-weight: 600;
+    width: 100%;
 }
 
 .Title-h1 {
@@ -212,4 +221,9 @@ table {
 .Title i {
     font-size: 20px;
     margin-right: 5px;
+}
+
+.Title svg {
+    margin-right: 5px;
+    width: 24px;
 }

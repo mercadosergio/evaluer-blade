@@ -59,8 +59,7 @@ class PageController extends Controller
     public function student()
     {
         $user = User::with('student.courses')->find(Auth::id());
-        $course = $user->student->courses[0];
-        return view('student.index', compact('user', 'course'));
+        return view('student.index', compact('user'));
     }
 
     public function advisor()
@@ -137,12 +136,13 @@ class PageController extends Controller
     public function proposal_form(string $id)
     {
         $activityId = $id;
+        $activity = Activity::findOrFail($id);
         $user = User::with('student.program', 'student.teams.students', 'student.courses.advisor')->find(Auth::id());
         $student = $user->student;
         $members = $student->teams[0]->students;
         $lines = ResearchArea::where('program_id', $user->student->program->id)->get();
         // dd($student->courses[0]->advisor);
-        return view('proposals.form', compact('activityId', 'student', 'lines', 'members'));
+        return view('proposals.form', compact('activityId', 'activity', 'student', 'lines', 'members'));
     }
 
     public function programs()

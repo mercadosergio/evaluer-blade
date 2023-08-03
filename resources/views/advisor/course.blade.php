@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="Post-content">
-                    <button class="Post-button button-active button txt-white back-primary" id="new-post">Publicar un
+                    <button class="Post-button button-active button txt-white bg-primary-100" id="new-post">Publicar un
                         anuncio</button>
                     <form class="post_form" id="form-post" method="POST" action="{{ route('store.post') }}">
                         @csrf
@@ -62,7 +62,7 @@
                         <div class="form-group">
                             <textarea require name="content" class="ckeditor Post-textarea" id="editor"></textarea>
                         </div>
-                        <button type="submit" class="Post-button button txt-white back-primary"
+                        <button type="submit" class="Post-button button txt-white bg-primary-100"
                             id="action">Publicar</button>
                     </form>
                 </div>

@@ -1,5 +1,4 @@
 /* Progressbar */
-
 .progressbar {
     position: relative;
     display: flex;
@@ -61,21 +60,8 @@
 /* Form */
 
 .form {
-    background: #fff;
-    border: 1px solid #ccc;
     width: 100%;
     padding: 15px 20px;
-
-    /* height: 100%; */
-    /* min-height: calc(100vh - 150px); */
-    /* width: 70%; */
-    /* width: 100%;
-    margin: 0 auto;
-    border: 1px solid #ccc;
-    border-radius: 0.35rem;
-    background: #fff;
-    display: flex; */
-    /* flex-direction: column; */
 }
 
 .form-step {

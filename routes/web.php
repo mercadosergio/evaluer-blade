@@ -9,6 +9,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubmissionController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 use App\Models\Program;
 use Illuminate\Support\Facades\Route;
@@ -46,14 +47,14 @@ Route::post('/users',       [UserController::class, 'register'])->name('users.re
 Route::post('/activities',  [ActivityController::class, 'store'])->name('store.activity');
 Route::post('/submissions', [SubmissionController::class, 'store'])->name('store.submission');
 Route::post('/posts',       [PostController::class, 'store'])->name('store.post');
+Route::post('/teams',       [TeamController::class, 'store'])->name('store.team');
 
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::get('/autocomplete',         [ActivityController::class, 'search']);
 Route::get('/radio-semesters',      [ProgramController::class, 'getRadioButtons']);
+Route::get('/student-by-dni',       [StudentController::class, 'getByDni']);
 Route::get('/autocomplete-student', [StudentController::class, 'search']);
-
-// Route::post('/activities', [ActivityController::class, 'store'])->name('store.team');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

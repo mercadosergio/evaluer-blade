@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="Formulario-button">
-                        <button class="button txt-white back-primary" type="submit">Enviar</button>
+                        <button class="button txt-white bg-primary-100" type="submit">Enviar</button>
                     </div>
                 </div>
             </div>

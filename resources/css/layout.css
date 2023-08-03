@@ -1,5 +1,5 @@
 :root {
-    --primary: rgb(11, 78, 179);
+    --primary: #0b4eb3;
     --secondary: #fee700;
 }
 
@@ -7,7 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: rgb(246 249 255);
+    background-color: #f6f9ff;
 }
 
 .Header {
@@ -225,12 +225,6 @@ body {
 .Dropdown-i {
     margin-right: 5px;
     font-size: 18px;
-}
-
-.Main {
-    margin-top: 90px;
-    padding: 20px;
-    /* min-height: calc(100vh - 90.36px) !important; */
 }
 
 /* Footer */

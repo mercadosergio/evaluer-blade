@@ -16,8 +16,20 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'primary': {
+                    100: '#0b4eb3',
+                    200: '#0a459c',
+                },
+                'secondary': '#0b4eb3',
+                'seasmoke': '#f6f9ff',
+            },
+        },
+        screens: {
+            'tablet': '640px',
+            'laptop': '1024px',
+            'desktop': '1280px',
         },
     },
-
     plugins: [forms, typography],
 };

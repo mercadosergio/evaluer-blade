@@ -79,21 +79,28 @@ class StudentController extends Controller
 
     public function search(Request $request)
     {
-        $search = $request->get('term');
-        $courseId = $request->get('courseId');
-
+        $search = $request->input('term');
+        $courseId = $request->input('course_id');
         $students = Student::with(['courses' => function ($query) use ($courseId) {
             $query->where('course_id', $courseId);
         }])->where('dni', 'LIKE', '%' . $search . '%')->get();
 
-        $result = [];
+        // $result = [];
 
-        foreach ($students as $student) {
-            $result[] = [
-                'label' => $student->names . ' ' . $student->first_lastname . ' ' . $student->second_lastname,
-                'value' => $student->names . ' ' . $student->first_lastname . ' ' . $student->second_lastname,
-            ];
-        }
+        // foreach ($students as $student) {
+        //     $result[] = [
+        //         'label' => $student->names . ' ' . $student->first_lastname . ' ' . $student->second_lastname,
+        //         'value' => $student->names . ' ' . $student->first_lastname . ' ' . $student->second_lastname,
+        //     ];
+        // }
         return response()->json($students);
+    }
+
+    public function getByDni(Request $request)
+    {
+        $dni = $request->input('dni');
+        $studentData = Student::where('dni', $dni)->first();
+
+        return response()->json($studentData);
     }
 }

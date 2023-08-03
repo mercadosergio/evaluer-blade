@@ -275,7 +275,7 @@ class DatabaseSeeder extends Seeder
 
         Team::create([
             'id' => 1,
-            'program' => 'INGENIERÍA INFORMÁTICA',
+            'program_id' => 1,
             'semester' => 8,
             'n_members' => 1,
             'period' => '2023-1',

@@ -49,38 +49,38 @@
         </div>
         <div class="Modules">
             <a href="{{ route('register') }}" class="Modules-a">
-                <div class="Modules-div back-primary">
+                <div class="Modules-div bg-primary-100">
                     <h2 class="Modules-h2">Registro de usuario</h2>
                     <img class="Modules-img" src="{{ asset('img/add-user.png') }}" alt="">
                 </div>
             </a>
             <a href="{{ route('show.users') }}" class="Modules-a">
-                <div class="Modules-div back-primary">
+                <div class="Modules-div bg-primary-100">
                     <h2 class="Modules-h2">Usuarios</h2>
                     <img class="Modules-img" src="{{ asset('img/control-user.png') }}" alt="">
                 </div>
             </a>
             <a href="" class="Modules-a">
-                <div class="Modules-div back-primary">
+                <div class="Modules-div bg-primary-100">
                     <h2 class="Modules-h2">Notas</h2>
                     <img class="Modules-img" src="{{ asset('img/notas.png') }}" alt="">
 
                 </div>
             </a>
             <a href="{{ route('show.programs') }}" class="Modules-a">
-                <div class="Modules-div back-primary">
+                <div class="Modules-div bg-primary-100">
                     <h2 class="Modules-h2">Programas</h2>
                     <img class="Modules-img" src="{{ asset('img/programas.png') }}" alt="">
                 </div>
             </a>
             <a href="" class="Modules-a">
-                <div class="Modules-div back-primary">
+                <div class="Modules-div bg-primary-100">
                     <h2 class="Modules-h2">Peticiones</h2>
                     <img class="Modules-img" src="{{ asset('img/request.png') }}" alt="">
                 </div>
             </a>
             <a href="/roles" class="Modules-a">
-                <div class="Modules-div back-primary">
+                <div class="Modules-div bg-primary-100">
                     <h2 class="Modules-h2">Roles</h2>
                     <img class="Modules-img" src="{{ asset('img/request.png') }}" alt="">
                 </div>

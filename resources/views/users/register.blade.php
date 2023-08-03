@@ -90,7 +90,7 @@
             @error('phone')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            <button class="Register-button button txt-white back-primary" type="submit"
+            <button class="Register-button button txt-white bg-primary-100" type="submit"
                 title="Registrar">Registrar</button>
         </section>
     </form>

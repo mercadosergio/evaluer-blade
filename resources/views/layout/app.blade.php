@@ -27,7 +27,7 @@
 
 <body>
     <div class="Screen">
-        <header class="Header back-primary">
+        <header class="Header bg-primary-100">
             <nav class="Header-nav">
                 <!-- Mobile design -->
                 <div class="Header-hamburger mobile-display">
@@ -94,12 +94,12 @@
             @livewire('admin-sidebar')
             @vite('resources/css/admin.sidebar.css')
         @endif
-        <main class="Main">
+        <main class="mt-16 desktop:mt-[90px] p-5">
             @yield('content')
         </main>
     </div>
 
-    <footer class="Footer back-primary">
+    <footer class="Footer bg-primary-100">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-12">
