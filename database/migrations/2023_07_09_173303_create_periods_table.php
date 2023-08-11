@@ -12,8 +12,8 @@ return new class extends Migration
             $table->id();
             $table->string('year');
             $table->enum('term', [1, 2]);
-            $table->string('start_at');
-            $table->string('end_at');
+            $table->bigInteger('start_at');
+            $table->bigInteger('end_at');
         });
     }
 

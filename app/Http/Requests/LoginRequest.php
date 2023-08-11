@@ -20,6 +20,14 @@ class LoginRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'username.required' => 'El usuario es requerido.',
+            'password.required' => 'La contraseña es requerida.'
+        ];
+    }
+
     public function getCredentials()
     {
         $username = $this->get('username');

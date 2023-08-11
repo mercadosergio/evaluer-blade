@@ -6,7 +6,7 @@
 
     <section class="flex flex-col laptop:grid laptop:gap-7">
         <div class="flex flex-col">
-            @if ($courses = $user->student->courses)
+            @if (isset($courses) && $courses->count() > 0)
                 <div class="rounded border w-full">
                     <!-- Tabs -->
                     <ul id="tabs" class="inline-flex pt-2 px-1 w-full border-b">
@@ -16,6 +16,9 @@
                                     {{ $course->period->term }}</a>
                             </li>
                         @endforeach
+                        <li>
+                            <a href="#tab2">Hola</a>
+                        </li>
                     </ul>
                     <!-- Tab Contents -->
                     <div id="tab-contents">
@@ -25,10 +28,30 @@
                                     <i class="Title-i bi bi-bar-chart-steps"></i>
                                     <h1 class="Title-h1">{{ $course->subject }}</h1>
                                 </div>
+                                <div class="my-2 p-3 bg-white rounded items-center card-rounded flex justify-evenly">
+                                    <div class="flex items-center space-x-3">
+                                        <label class="font-semibold">Programa:</label>
+                                        <p>{{ $course->program->name }}</p>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <label class="font-semibold">Semestre:</label>
+                                        <p>{{ $course->semester }}</p>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <label class="font-semibold">Asesor:</label>
+                                        <p>{{ $course->advisor->names }} {{ $course->advisor->first_lastname }}
+                                            {{ $course->advisor->second_lastname }}</p>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <label class="font-semibold">Periodo:</label>
+                                        <p>{{ $course->period->year }}-{{ $course->period->term }}</p>
+                                    </div>
+                                </div>
                                 <div class="my-2 p-3 bg-white rounded items-center card-rounded">
                                     <p>{{ $course->description }}</p>
                                 </div>
-                                @if ($team = $user->student->teams[0])
+
+                                @if ($teams->count() > 0)
                                     <div class="Title">
                                         <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
                                             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -40,7 +63,7 @@
                                     </div>
                                     <div class="rounded border-none bg-white py-3 px-4 ring-1 ring-gray-200">
                                         <ul>
-                                            @foreach ($team->students as $student)
+                                            @foreach ($teams[0]->students as $student)
                                                 <li>{{ $student->names }} {{ $student->first_lastname }}
                                                     {{ $student->second_lastname }}
                                                 </li>
@@ -57,8 +80,11 @@
                                                 <a class="my-1"
                                                     href="{{ route('student.activity', ['id' => $activity->id]) }}">
                                                     <div
-                                                        class="Modules-div bg-white flex p-3 rounded items-center card-rounded">
+                                                        class="Modules-div bg-white flex p-3 rounded items-center justify-between card-rounded">
                                                         <p class="font-medium">{{ $activity->title }}</p>
+                                                        <p class="font-medium">{{ $activity->type->typename }}</p>
+                                                        <span
+                                                            class="font-medium text-gray-500">{{ $activity->created_at->diffForHumans() }}</span>
                                                     </div>
                                                 </a>
                                             @endforeach
@@ -87,6 +113,7 @@
                                     @endforeach
                                 @endif
                             </div>
+                            <div id="tab2" class="tab-div p-4">TAB 2</div>
                         @endforeach
                     </div>
                 </div>

@@ -29,6 +29,9 @@
     @include('layout.components.header')
 
     <div class="Screen">
+        @livewire('admin-sidebar')
+        @vite('resources/css/admin.sidebar.css')
+
         <main class="desktop:mt-[90px] p-5">
             @yield('content')
         </main>

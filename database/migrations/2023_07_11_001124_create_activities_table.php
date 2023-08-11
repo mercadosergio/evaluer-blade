@@ -7,9 +7,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('activities', function (Blueprint $table) {
@@ -19,8 +16,8 @@ return new class extends Migration
             $table->integer('status');
             $table->string('available_from');
             $table->string('available_until');
-            $table->integer('type_id');
-            $table->string('typename');
+            $table->bigInteger('type_id')->unsigned();
+            $table->foreign("type_id")->references("id")->on("activity_types");
 
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
@@ -30,9 +27,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('activities');

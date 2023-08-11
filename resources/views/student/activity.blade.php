@@ -95,7 +95,8 @@
                         </div>
                     @else
                         @if (time() > $activity->available_from || time() < $activity->available_until)
-                            <a class="button bg-primary-100" href="{{ route('proposal.form', ['id' => $activity->id]) }}">Ir al
+                            <a class="button bg-primary-100 text-white"
+                                href="{{ route('proposal.form', ['id' => $activity->id]) }}">Ir al
                                 formulario</a>
                         @else
                             <span class="center"><em>No se entregó la actividad</em></span>
@@ -152,7 +153,7 @@
                                     </label>
                                 </div>
                                 <button id="send" type="submit" {{ time() < $activity->available_from ? 'disabled' : '' }}
-                                    class="m-auto button txt-white bg-primary-100">
+                                    class="m-auto button txt-white bg-primary-100 text-white">
                                     Enviar
                                 </button>
                             </form>
@@ -211,7 +212,7 @@
                                     </label>
                                 </div>
                                 <button id="send" type="submit" {{ time() < $activity->available_from ? 'disabled' : '' }}
-                                    class="Send-button button txt-white bg-primary-100">Enviar</button>
+                                    class="Send-button button txt-white bg-primary-100 text-white">Enviar</button>
                             </form>
                         @endif
                     @endif

@@ -5,16 +5,6 @@
     --border-line: solid 1px;
 }
 
-.Main {
-    /* margin-left: 17%; */
-    /* margin-bottom: 40px; */
-}
-
-.General {
-    width: 70%;
-    margin: auto;
-}
-
 .Stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -96,31 +86,6 @@
     font-size: 50px;
     margin: auto;
     font-weight: 600;
-}
-
-.Modules {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-}
-
-.Modules-a {
-    box-shadow: 0px 0 30px rgb(1 41 112 / 10%);
-}
-
-.Modules-div {
-    background: var(--primary);
-    display: flex;
-    flex-direction: column;
-    color: #fff;
-    justify-content: center;
-    text-align: center;
-    border-radius: 0.6rem;
-}
-
-.Modules-div * {
-    margin: auto;
 }
 
 .Modules-h2 {

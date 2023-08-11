@@ -29,7 +29,7 @@ class User extends Authenticatable
         'password',
         'username',
         'role_id',
-        'avatar',
+        'profile_photo_path',
     ];
 
     /**
@@ -71,9 +71,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(Coordinator::class);
     }
-    
+
     public function admin()
     {
         return $this->hasOne(Admin::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'role_id');
     }
 }

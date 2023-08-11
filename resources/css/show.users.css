@@ -1,109 +1,7 @@
-.Register {
-    width: 70%;
-    margin: auto;
-    background: #fff;
-    box-shadow: 0px 0 30px rgb(1 41 112 / 10%);
-
-}
-
-.Register-title {
-    display: flex;
-    align-items: center;
-    border-bottom: #bebebe 2px solid;
-    border-radius: 2px;
-    padding: 0 0 5px 0;
-}
-
-.Register-i {
-    font-size: 24px;
-    margin-right: 5px;
-}
-
-.Register-h1 {
-    font-size: 24px;
-    font-weight: var(--title-weight);
-}
-
-.Register-div {
-    display: flex;
-    margin: 15px 0;
-}
-
-.Register-label {
-    font-weight: var(--title-weight);
-    margin: auto;
-    margin-left: 0;
-}
-
-.Register-input,
-select,
-#selectSemester {
-    float: right;
-    width: 60%;
-}
-
-#selectSemester select {
-    width: 50% !important;
-}
-
-.Register-button {
-    margin: auto;
-}
-
-.Tabs-container {
-    width: 100%;
-    margin: 30px auto;
-    margin-top: 0;
-    padding: 25px 0;
-}
-
-.TabsMenu {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    z-index: 200;
-}
-
-.TabsMenu a {
-    text-decoration: none;
-    color: black;
-}
-
-.TabsMenu-li {
-    box-shadow: 0px 0 30px rgb(1 41 112 / 10%);
-    font-weight: 500;
-}
-
-.TabsMenu-li:not(:last-child) {
-    margin-right: 7px;
-}
-
-.TabsMenu-a {
-    display: block;
-    position: relative;
-    top: 4px;
-    padding: 10px 25px;
-    border-radius: 2px 2px 0 0;
-    background: white;
-    opacity: 0.7;
-    transition: all 0.1s ease-in-out;
-}
-
 .TabsMenu-li.active a,
 .TabsMenu-a:hover {
     opacity: 1;
     top: 0;
-}
-
-.TabsBody {
-    box-sizing: border-box;
-    position: relative;
-    padding: 25px;
-    border-radius: 0 4px 4px 4px;
-    height: 100%;
-    overflow: hidden;
-    box-shadow: 0px 0 30px rgb(1 41 112 / 10%);
-    background: #ffffff;
 }
 
 .TabsPanel {
@@ -116,20 +14,6 @@ select,
 
 .TabsPanel p+div {
     margin-top: 15px;
-}
-
-td {
-    font-size: 16px;
-}
-
-ul {
-    list-style: none !important;
-}
-
-.add-btn {
-    /* margin-left: auto; */
-    float: right;
-    color: #fff;
 }
 
 @media screen and (max-width: 100%) {
@@ -158,24 +42,5 @@ ul {
 
     .TabsBody {
         border-radius: 0;
-    }
-}
-
-
-@media screen and (max-width: 2100px) {
-    .Register {
-        padding: 30px 60px;
-
-        /* display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px; */
-        display: flex;
-        flex-direction: column;
-    }
-
-    .Indice,
-    .Table-section {
-        width: 90%;
-        margin: auto;
     }
 }

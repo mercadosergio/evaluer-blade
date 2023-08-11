@@ -6,11 +6,7 @@
     --width-collapsed: 50px;
 }
 
-.Main,
-footer {
-    margin-left: 17%;
-    /* margin-bottom: 40px; */
-}
+
 
 .body-expanded {
     margin-left: var(--width);
@@ -197,4 +193,12 @@ footer {
     transition: 0.3;
     padding: 10px 0 10px 40px;
     transition: 0.3s;
+}
+
+@media screen and (min-width: 1024px) {
+
+    main,
+    footer {
+        margin-left: 17%;
+    }
 }

@@ -53,13 +53,39 @@ class PageController extends Controller
 
     public function admin()
     {
-        return view('admin.dashboard');
+        $users = User::all();
+
+        $usersByRole = $users->groupBy('role_id');
+        $students = $usersByRole->get(1, collect());
+        $advisors = $usersByRole->get(2, collect());
+        $coordinators = $usersByRole->get(3, collect());
+        foreach ($students as $student) {
+            $studentData = $student->student;
+        }
+
+        foreach ($advisors as $advisor) {
+            $advisorData = $advisor->advisor;
+        }
+
+        foreach ($coordinators as $coordinator) {
+            $coordinatorData = $coordinator->coordinator;
+        }
+        $currentTime = time();
+
+        $activeCourses = Course::whereHas('period', function ($query) use ($currentTime) {
+            $query->where('start_at', '<=', $currentTime)
+                ->where('end_at', '>=', $currentTime);
+        })->get();
+
+        return view('admin.dashboard', compact('activeCourses', 'students', 'advisors', 'coordinators'));
     }
 
     public function student()
     {
-        $user = User::with('student.courses')->find(Auth::id());
-        return view('student.index', compact('user'));
+        $user = User::with('student.courses', 'student.teams')->find(Auth::id());
+        $courses = ($user->student->courses) ? $user->student->courses : null;
+        $teams = ($user->student->teams) ? $user->student->teams : null;
+        return view('student.index', compact('user', 'courses', 'teams'));
     }
 
     public function advisor()
@@ -94,9 +120,9 @@ class PageController extends Controller
 
     public function users()
     {
-        $students = Student::with('user')->get();
-        $advisors = Advisor::with('user')->get();
-        $coordinators = Coordinator::with('user')->get();
+        $students = Student::with('user.role')->get();
+        $advisors = Advisor::with('user.role')->get();
+        $coordinators = Coordinator::with('user.role')->get();
         // $admins = Admin::with('user')->get();
 
         return view('users.show', compact('students', 'advisors', 'coordinators'));

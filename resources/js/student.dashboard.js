@@ -15,7 +15,7 @@ window.onload = function () {
     }
 };
 
-let tabTogglers = tabsContainer.querySelectorAll("#tabs a");
+let tabTogglers = document.querySelectorAll("#tabs a");
 
 console.log(tabTogglers);
 
@@ -29,7 +29,8 @@ tabTogglers.forEach(function (toggler) {
 
         for (let i = 0; i < tabContents.children.length; i++) {
 
-            tabTogglers[i].parentElement.classList.remove("border-t", "border-r", "border-l", "-mb-px", "bg-white"); tabContents.children[i].classList.remove("hidden");
+            tabTogglers[i].parentElement.classList.remove("border-t", "border-r", "border-l", "-mb-px", "bg-white");
+            tabContents.children[i].classList.remove("hidden");
             if ("#" + tabContents.children[i].id === tabName) {
                 continue;
             }

@@ -9,8 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Home | Evaluer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-    @vite(['resources/css/home.css'])
+    @vite(['resources/css/home.css', 'resources/css/app.css'])
+    @livewireStyles
 </head>
 
 <body>
@@ -18,7 +20,7 @@
         <nav class="Header-nav">
             <div class="Header-container_logo">
                 <img src="{{ asset('img/aunar-logo-2.png') }}" class="logo-aunar">
-                <a class="navbar-brand" href="home">
+                <a class="" href="home">
                     <img src="{{ asset('img/evaluer-logo-1.png') }}" class="logo-evaluer">
                 </a>
             </div>
@@ -31,51 +33,70 @@
         </nav>
     </header>
     <main class="Main">
-        <section class="Home">
-            <div class="Welcome">
-                <h1 class="Welcome-h1">Bienvenido!</h1>
-                <p class="Welcome-p" style="text-align: justify; font-size: 28px; color: white;">Éste es el campus
+        <section class="Home bg-cover bg-no-repeat bg-center flex flex-col laptop:flex-row min-h-screen">
+            <div class="hidden laptop:block text-white my-auto mx-3 ml-10">
+                <h1 class="text-4xl desktop:text-5xl mb-3 font-bold">Bienvenido!</h1>
+                <p class="text-left font-semibold tablet:text-xl laptop:text-2xl desktop:text-3xl text-white">
+                    Éste es el campus
                     virtual de seguimiento
                     e investigación. Interactua con entregas de proyectos de grado, evaluaciones, comentarios y notas.
                 </p>
             </div>
 
-            <div class="Login">
-                <form action="{{ route('login') }}" method="POST">
-                    @csrf
-                    <h3 class="Login-h3" style="text-align: center;">Ingresa a tu cuenta</h3>
-                    <label class="Login-label">Usuario/Email</label>
+            <div class="my-auto relative w-full laptop:w-5/6">
+                <div
+                    class="w-11/12 m-auto tablet:w-1/2 laptop:absolute laptop:right-12 laptop:w-80 p-6 laptop:top-1/2 laptop:-translate-y-1/2 desktop:w-96 desktop:p-7 bg-[#f7f3f3bd]">
+                    <form autocomplete="off" class="flex flex-col items-center" action="{{ route('login') }}"
+                        method="POST">
+                        @csrf
+                        <h3 class="text-xl mb-5 font-bold text-center">Ingresa a tu cuenta</h3>
 
-                    <div class="form-input">
-                        <input class="Login-input" type="text" require placeholder="Ingrese su usuario"
-                            name="username">
-                        <i class="Login-i fa-user"></i>
-                    </div>
+                        <label class="w-full text-start text-base font-bold mt-4 mb-1">Usuario/Email</label>
+                        <div class="w-full flex relative">
+                            <input
+                                class="bg-white border border-gray-400 pl-10 text-black placeholder-gray-600 text-base rounded-md focus:ring-0 block w-full p-2.5 placeholder-opacity-100 placeholder:duration-1000 focus:placeholder-opacity-0 focus:placeholder:translate-x-full"
+                                type="text" require placeholder="Ingrese su usuario" name="username">
+                            <i
+                                class="bi bi-person-fill text-2xl text-gray-500 absolute left-2 top-1/2 -translate-y-1/2"></i>
+                        </div>
+                        @error('username')
+                            <span class="w-full text-start text-base text-red-600 font-medium">{{ $message }}
+                            </span>
+                        @enderror
 
-                    <label class="Login-label">Contraseña</label>
-                    <div class="form-input">
-                        <input class="Login-input" type="password" require placeholder="Ingrese su contraseña"
-                            name="password">
-                        <i class="Login-i fa-unlock-keyhole"></i>
-                    </div>
-                    <button class="Login-button" type="submit" name="login">Iniciar sesión</button>
+                        <label class="w-full text-start text-base font-bold mt-4 mb-1">Contraseña</label>
+                        <div class="w-full flex relative">
+                            <input
+                                class="bg-white border border-gray-400 pl-10 text-black placeholder-gray-600 text-base rounded-md focus:ring-0 block w-full p-2.5 placeholder-opacity-100 placeholder:duration-1000 focus:placeholder-opacity-0 focus:placeholder:translate-x-full"
+                                type="password" require placeholder="Ingrese su contraseña" name="password">
+                            <i
+                                class="bi bi-key-fill text-2xl text-gray-500 absolute left-2 top-1/2 -translate-y-1/2"></i>
+                        </div>
+                        @error('password')
+                            <span class="w-full text-start text-base text-red-600 font-medium">{{ $message }}
+                            </span>
+                        @enderror
+                        <button
+                            class="w-full text-white font-semibold bg-primary-100 hover:bg-primary-200 rounded mb-4 py-2 px-4 mt-4"
+                            type="submit" name="login">Iniciar sesión</button>
 
-                    <p class="Login-p">Una vez registrado, su usuario y
-                        contraseña será su
-                        documento de identidad.</p>
-
-                </form>
+                        <p class="text-justify text-base">Una vez registrado, su usuario y
+                            contraseña será su
+                            documento de identidad.</p>
+                    </form>
+                </div>
             </div>
         </section>
 
-        <section class="Campus">
-            <div class="Campus-title">
-                <h3 class="Campus-h3">CAMPUS EDUCATIVO AUNAR</h3>
+        <section class="w-full">
+            <div class="bg-secondary flex items-center justify-center p-5 desktop:p-7">
+                <h3 class="text-xl desktop:text-3xl text-primary-100">CAMPUS EDUCATIVO AUNAR</h3>
             </div>
 
-            <div class="Campus-content">
-                <article class="Campus-article">
-                    <p class="Campus-p">La Corporación Universitaria Autónoma de Nariño Extensión Cartagena fomenta el
+            <div class="flex flex-col tablet:flex-row h-full w-full object-cover">
+                <div class="bg-gray-200 w-full p-7 tablet:p-10 laptop:w-1/2 laptop:p-14">
+                    <p class="text-base desktop:text-xl m-auto text-justify text-black">La Corporación
+                        Universitaria Autónoma de Nariño Extensión Cartagena fomenta el
                         desarrollo
                         académico y administrativo de los programas, es una Institución de Educación Superior
                         comprometida con la Cultura, la Investigación, el Emprendimiento y el Bilingüismo, que forman
@@ -85,50 +106,16 @@
                         encontrarás con diversas actividades organizadas por el equipo estudiante que mejoran el
                         bienestar educativo.
                     </p>
-                </article>
-                <article class="Campus-img">
+                </div>
+                <div class="Campus-img bg-black w-full tablet:w-1/2 bg-cover bg-no-repeat bg-center">
 
-                </article>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- FOOTER -->
-
-    <footer class="Footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-12">
-                    <div class="Footer-info">
-                        <section class="Footer-about">
-                            <h3 class="Footer-h3" for="">Sobre nosotros</h3>
-                            <p class="Footer-p">Evaluer es una plataforma que permite establecer los pasos
-                                específicos para el buen manejo y administración de los recursos digitales que se hacen
-                                con la entrega de estos, para la Gestión de Proyectos de Grado en la Corporacion
-                                Universitaria Autonoma de Nariño, esto con el fin de promover una interacción entre el
-                                estudiante y el docente.</p>
-                        </section>
-
-                        <section class="Footer-team">
-                            <h3 class="Footer-h3 team-title">Equipo de desarrollo</h3>
-                            <div class="Footer-div">
-                                <label>Sergio Mercado</label>
-                                <img class="Footer-img" width="100" src="{{ asset('img/foto-sergio.jpg') }}"
-                                    alt="">
-                            </div>
-                            <div class="Footer-div">
-                                <label>Dager Lopez</label>
-                                <img class="Footer-img" width="100" src="{{ asset('img/foto-dager.png') }}"
-                                    alt="">
-                            </div>
-                        </section>
-                    </div>
-                    <p class="copyright-text">Copyright &copy; 2023 - {{ date('Y') }} Evaluer. All rights reserved
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
+    @include('components.shared.footer')
+    @livewireScripts
 </body>
 
 </html>

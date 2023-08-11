@@ -151,10 +151,16 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Period::create([
-            'year' => '2023',
-            'term' => 2,
-            'start_at' => strtotime(time()),
-            'end_at' => strtotime(time()),
+            'year' => date('Y'),
+            'term' => 1,
+            'start_at' => strtotime('2023-01-01'),
+            'end_at' => strtotime('+6 months, 12:00am', strtotime('2023-01-01')),
+        ]);
+        Period::create([
+            'year' => date('Y'),
+            'term' => (date('n') <= 6) ? 1 : 2,
+            'start_at' => time(),
+            'end_at' => strtotime('+6 months, 12:00am', time()),
         ]);
 
         User::create([
@@ -163,7 +169,7 @@ class DatabaseSeeder extends Seeder
             'username' => '0987654321',
             'password' => bcrypt('0987654321'),
             'name' => 'Jose',
-            'avatar' => 'default.png',
+            'profile_photo_path' => 'default.png',
             'status' => 1,
             'role_id' => 1,
         ]);
@@ -173,7 +179,7 @@ class DatabaseSeeder extends Seeder
             'username' => '2222222222',
             'password' => bcrypt('2222222222'),
             'name' => 'Maria',
-            'avatar' => 'default.png',
+            'profile_photo_path' => 'default.png',
             'status' => 1,
             'role_id' => 1,
         ]);
@@ -183,7 +189,7 @@ class DatabaseSeeder extends Seeder
             'username' => '1234567891',
             'password' => bcrypt('1234567891'),
             'name' => 'Marcos',
-            'avatar' => 'default.png',
+            'profile_photo_path' => 'default.png',
             'status' => 1,
             'role_id' => 2,
         ]);
@@ -193,7 +199,7 @@ class DatabaseSeeder extends Seeder
             'username' => '1234567890',
             'password' => bcrypt('1234567890'),
             'name' => 'Juan',
-            'avatar' => 'default.png',
+            'profile_photo_path' => 'default.png',
             'status' => 1,
             'role_id' => 4,
         ]);
@@ -203,7 +209,7 @@ class DatabaseSeeder extends Seeder
             'username' => '1234567892',
             'password' => bcrypt('1234567892'),
             'name' => 'Mauricio',
-            'avatar' => 'default.png',
+            'profile_photo_path' => 'default.png',
             'status' => 1,
             'role_id' => 3,
         ]);
@@ -234,7 +240,7 @@ class DatabaseSeeder extends Seeder
             'dni' => '2222222222',
             'program_id' => 1,
             'semester' => 8,
-            'user_id' => 1,
+            'user_id' => 2,
         ]);
 
         Advisor::create([
@@ -256,6 +262,16 @@ class DatabaseSeeder extends Seeder
             'program_id' => 1,
             'user_id' => 5,
         ]);
+
+        User::factory(10)->create(['role_id' => 1])->each(function ($user) {
+            Student::factory()->create(['user_id' => $user->id, 'names' => $user->name]);
+        });
+        User::factory(6)->create(['role_id' => 2])->each(function ($user) {
+            Advisor::factory()->create(['user_id' => $user->id, 'names' => $user->name]);
+        });
+        User::factory(6)->create(['role_id' => 3])->each(function ($user) {
+            Coordinator::factory()->create(['user_id' => $user->id, 'names' => $user->name]);
+        });
 
         Course::create([
             'id' => 1,

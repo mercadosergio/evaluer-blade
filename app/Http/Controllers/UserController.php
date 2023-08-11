@@ -3,32 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Advisor;
-use App\Models\Coordinator;
-use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\User;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function register(Request $request)
     {
         $request->validate([
@@ -55,75 +44,81 @@ class UserController extends Controller
             'phone.min' => 'El número de teléfono debe tener al menos 10 digitos.',
         ]);
 
-        $user = User::create([
-            'role_id' => $request->role_id,
-            'name' => $request->name,
-            'email' => $request->email,
-            'username' => $request->dni,
-            'password' => bcrypt($request->dni),
-            'avatar' => 'default.png'
-        ]);
+        $user = new User();
+        $user->role_id = $request->role_id;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->username = $request->dni;
+        $user->password = bcrypt($request->dni);
+        $user->profile_photo_path = 'default.png';
+        $user->save();
 
         if ($request->role_id == 1) {
-            Student::create([
-                'names' => $request->name,
-                'first_lastname' => $request->first_lastname,
-                'second_lastname' => $request->second_lastname,
-                'dni' => $request->dni,
-                'program' => $request->program,
-                'semester' => 5,
-                'entered_at' => date('Y'),
-                'user_id' => $user->id,
-            ]);
+            $student = new StudentController();
+            $student->store($request, $user);
+            return $student ? redirect()->back()->with('success', 'Usuario registrado con éxito') : redirect()->back()->with('error', 'Ocurrió un error al registrar el usuario');
         } elseif ($request->role_id == 2) {
-            Advisor::create([
-                'names' => $request->name,
-                'first_lastname' => $request->first_lastname,
-                'second_lastname' => $request->second_lastname,
-                'dni' => $request->dni,
-                'program' => $request->program,
-                'user_id' => $user->id,
-            ]);
+            $advisor = new AdvisorController();
+            $advisor->store($request, $user);
+            return $advisor ? redirect()->back()->with('success', 'Usuario registrado con éxito') : redirect()->back()->with('error', 'Ocurrió un error al registrar el usuario');
         } elseif ($request->role_id == 3) {
-            Coordinator::create([
-                'names' => $request->name,
-                'first_lastname' => $request->first_lastname,
-                'second_lastname' => $request->second_lastname,
-                'dni' => $request->dni,
-                'program' => $request->program,
-                'user_id' => $user->id,
-            ]);
+            $coordinator = new CoordinatorController();
+            $coordinator->store($request, $user);
+            return $coordinator ? redirect()->back()->with('success', 'Usuario registrado con éxito') : redirect()->back()->with('error', 'Ocurrió un error al registrar el usuario');
         }
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'dni' => 'required|size:10',
+            'name' => 'required',
+            'first_lastname' => 'required',
+            'second_lastname' => 'required',
+            'program' => 'required',
+            'email' => 'required|email|unique:users',
+        ], [
+            'dni.required' => 'El DNI es requerido.',
+            'dni.size' => 'El DNI debe tener exactamente 10 caracteres.',
+            'name.required' => 'El nombre es requerido.',
+            'first_lastname.required' => 'El primer apellido es requerido.',
+            'second_lastname.required' => 'El segundo apellido es requerido.',
+            'program.required' => 'El programa académico es requerido.',
+            'email.required' => 'El email es requerido.',
+            'email.email' => 'El email no tiene el formato correcto.',
+            'email.unique' => 'Hay una cuenta registrada con este email en el sistema.',
+        ]);
+
+        switch ($request->role_id) {
+            case 1:
+                $student = new StudentController();
+                $student->update($request, $user);
+                return $student ? redirect()->back()->with('success', 'Se actualizó el usuario') : redirect()->back()->with('error', 'Ocurrió un error al modificar la información');
+                break;
+            case 2:
+                $advisor = new AdvisorController();
+                $advisor->update($request, $user);
+                return $advisor ? redirect()->back()->with('success', 'Se actualizó el usuario') : redirect()->back()->with('error', 'Ocurrió un error al modificar la información');
+                break;
+            case 3:
+                $coordinator = new CoordinatorController();
+                $coordinator->update($request, $user);
+                return $coordinator ? redirect()->back()->with('success', 'Se actualizó el usuario') : redirect()->back()->with('error', 'Ocurrió un error al modificar la información');
+                break;
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //

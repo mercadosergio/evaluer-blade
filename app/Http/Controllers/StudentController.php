@@ -5,73 +5,60 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Student;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(Request $request, $userId)
     {
-        $request->validate([
-            'names' => 'required',
-            'first_lastname' => 'required',
-            'second_lastname' => 'required',
-            'dni' => 'required',
-            'program' => 'required',
-            'semester' => 'required',
-            'user_id' => 'required',
-        ]);
-
-        Student::create([]);
+        $student = new Student;
+        $student->names = $request->name;
+        $student->first_lastname = $request->first_lastname;
+        $student->second_lastname = $request->second_lastname;
+        $student->dni = $request->dni;
+        $student->program = $request->program;
+        $student->semester = 5;
+        $student->entered_at = date('Y');
+        $student->user_id = $userId;
+        $student->save();
         return back();
-        // return redirect()->route('')
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $student = Student::where('user_id', $user->id)->first();
+        $student->names = $request->name;
+        $student->first_lastname = $request->first_lastname;
+        $student->second_lastname = $request->second_lastname;
+        $student->dni = $request->dni;
+        $student->program = $request->program;
+        $student->semester = 5;
+        $student->save();
+
+        return back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //

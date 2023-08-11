@@ -1,4 +1,4 @@
-<aside id="sidemenu" class="Side">
+<aside id="sidemenu" class="Side hidden laptop:block">
     <!-- Header -->
     <div class="Side-header">
         <div class="btn-hamburguer"></div>
@@ -8,7 +8,7 @@
     <!-- Perfil -->
     <div class="Side-profile">
         <div class="Side-avatar">
-            <img class="perfil" src="{{ asset('avatar/' . auth()->user()->avatar) }}" alt="{{ auth()->user()->name }}">
+            <img class="perfil" src="{{ asset('avatar/' . auth()->user()->profile_photo_path) }}" alt="{{ auth()->user()->name }}">
             <div class="name"><span></span></div>
         </div>
     </div>

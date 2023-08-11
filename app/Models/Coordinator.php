@@ -16,7 +16,10 @@ class Coordinator extends Model
         'program',
         'user_id',
     ];
-
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     public function program()
     {
         return $this->belongsTo(Program::class);

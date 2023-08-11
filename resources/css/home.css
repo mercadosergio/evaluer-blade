@@ -52,11 +52,6 @@ h5 {
     padding: 0;
 }
 
-.container {
-    margin: 0 auto;
-    width: 90%;
-}
-
 .Header {
     position: absolute;
     top: 0;
@@ -95,142 +90,11 @@ h5 {
             rgba(0, 0, 0, 0.363),
             rgba(254, 233, 0, 0.336)),
         url('../../public/img/campus-aunar-2.png');
-
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-}
-
-.Welcome {
-    color: #ffffff;
-    margin: auto 10rem;
-}
-
-.Welcome-p {
-    text-align: left;
-    font-weight: 600;
-}
-
-.Login {
-    background: rgba(247, 243, 243, 0.74);
-    color: black;
-}
-
-.Login-h3 {
-    margin-bottom: 20px;
-}
-
-.Login-label {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.form-input {
-    margin: 10px 0;
-    margin-bottom: 15px;
-}
-
-.Login-input {
-    width: 100%;
-    border: none;
-    background: transparent;
-    outline: none;
-    padding: 10px;
-    font-size: 16px;
-    border-bottom: solid #000000 1px;
-}
-
-.Login-input::placeholder {
-    transition: opacity 1s, transform 1s;
-}
-
-.Login-input:focus::placeholder {
-    opacity: 0;
-    transform: translateX(100%);
-}
-
-.Login-button {
-    border: none;
-    outline: none;
-    padding: 10px 15px;
-    background: var(--primary);
-    font-weight: 600;
-    width: 100%;
-    color: white;
-    font-size: 18px;
-    border-radius: 3px;
-    cursor: pointer;
-    margin: 15px 0;
-}
-
-.Login-p {
-    text-align: justify;
-    font-size: 15px;
-}
-
-.Campus {
-    display: block;
-}
-
-.Campus-title {
-    width: 100%;
-    background: var(--secondary-home);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.Campus-h3 {
-    color: var(--primary);
-}
-
-.Campus-content {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    display: flex;
-}
-
-.Campus-article {
-    background: #013658;
-    color: #fff;
-    display: flex;
-}
-
-.Campus-p {
-    text-align: justify;
-    margin: auto;
 }
 
 .Campus-img {
     background: url("../../public/img/panoramic-view.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
 }
-
-/* Footer */
-.Footer {
-    background: var(--primary);
-    color: #fff;
-    margin-top: auto;
-}
-
-.Footer-info {
-    justify-content: center;
-
-}
-
-.Footer-h3 {
-    font-size: 18px;
-    font-weight: var(--title-weight);
-}
-
-.Footer-p {
-    text-align: center;
-}
-
 
 /* Escritorio 20' */
 @media screen and (max-width: 2100px) {
@@ -246,108 +110,11 @@ h5 {
     .logo-evaluer {
         width: 200px;
     }
-
-    .Home {
-        height: 100vh;
-        position: relative;
-    }
-
-    .Welcome {
-        width: 45%;
-    }
-
-    .Welcome-h1 {
-        font-size: 50px;
-    }
-
-    .Welcome-p {
-        font-size: 30px !important;
-    }
-
-    .Login {
-        position: absolute;
-        top: 50%;
-        left: 85%;
-        transform: translate(-50%, -50%);
-        width: 360px;
-        padding: 30px 30px;
-
-    }
-
-    .Campus-title {
-        padding: 30px;
-    }
-
-    .Campus-h3 {
-        font-size: 30px;
-    }
-
-    .Campus-article {
-        width: 50%;
-        padding: 60px;
-    }
-
-    .Campus-p {
-        font-size: 20px;
-    }
-
-    .Campus-img {
-        width: 50%;
-    }
-
-    /* Footer */
-    .Footer-info {
-        display: flex;
-        margin: 40px auto;
-    }
-
-    .Footer-about {
-        margin: 0 30px;
-        max-width: 580px;
-    }
-
-    .Footer-team {
-        margin: 0 30px;
-    }
-
-    .Footer-team {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        justify-content: center;
-        align-content: center;
-    }
-
-    .Footer-h3 {
-        text-align: center;
-        grid-column: 1/3;
-        margin-bottom: 7px;
-    }
-
-    .Footer-div {
-        justify-content: center;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        margin: 0 10px;
-    }
-
-    .Footer-img {
-        margin: 10px auto;
-    }
-
-    .copyright-text {
-        margin: 30px auto;
-        text-align: center;
-    }
 }
 
 @media screen and (max-width: 1440px) {
     .Welcome-h1 {
         font-size: 45px;
-    }
-
-    .Welcome-p {
-        font-size: 27px;
     }
 }
 
@@ -362,60 +129,6 @@ h5 {
 
     .Header-a {
         font-size: 15px;
-    }
-
-    .Welcome {
-        margin: auto 5rem;
-    }
-
-    .Welcome-h1 {
-        font-size: 35px;
-    }
-
-    .Welcome-p {
-        font-size: 25px !important;
-    }
-
-    .Login {
-        left: 82%;
-        width: 310px;
-        padding: 25px;
-    }
-
-    .Campus-title {
-        padding: 20px;
-    }
-
-    .Campus-article {
-        padding: 40px;
-    }
-
-    .Campus-p {
-        font-size: 16px;
-    }
-
-}
-
-@media screen and (max-width: 768px) {
-    .Welcome {
-        display: none;
-    }
-
-    .Login {
-        position: initial;
-        transform: translate(0, 0);
-        margin: auto;
-        width: 50%;
-    }
-
-    /* Footer */
-    .Footer-info {
-        flex-direction: column;
-        width: 75%;
-    }
-
-    .Footer-team {
-        margin: 35px auto;
     }
 }
 
@@ -434,55 +147,5 @@ h5 {
 
     .Header-ul {
         display: none;
-    }
-
-    .Main {
-        width: 100%;
-    }
-
-    .Home {
-        width: 100%;
-        flex-direction: column;
-    }
-
-    .Welcome {
-        display: none;
-        /*Notaaaaaaa*/
-    }
-
-    .Login {
-        width: 90%;
-    }
-
-    .Campus-title {
-        padding: 20px;
-    }
-
-    .Campus-h3 {
-        font-size: 20px;
-    }
-
-    .Campus-content {
-        flex-direction: column;
-    }
-
-    .Campus-article {
-        width: 100%;
-        padding: 30px;
-    }
-
-    .Campus-p {
-        font-size: 15px;
-    }
-
-    .Campus-img {
-        width: 100%;
-        height: 10rem;
-
-    }
-
-    /* Footer */
-    .Footer-info {
-        width: 100%;
     }
 }

@@ -14,19 +14,15 @@ class LoginController extends Controller
         $credentials = $request->getCredentials();
 
         if (!Auth::validate($credentials)) {
-            dd('error');
             return redirect()->to('login')
                 ->withErrors(trans('auth.failed'));
         };
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
-
-
         Auth::login($user);
-
-        return $this->authenticated($request, $user);
+        return $this->authenticated($user);
     }
 
-    public function authenticated(Request $request, $user)
+    public function authenticated($user)
     {
         switch ($user->role_id) {
             case 1:

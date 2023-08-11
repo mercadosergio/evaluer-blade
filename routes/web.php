@@ -44,6 +44,7 @@ Route::prefix('coordinator')->middleware('role:3')->group(function () {
 });
 
 Route::post('/users',       [UserController::class, 'register'])->name('users.register');
+Route::put('/users/{user}',   [UserController::class, 'update'])->name('update.user');
 Route::post('/activities',  [ActivityController::class, 'store'])->name('store.activity');
 Route::post('/submissions', [SubmissionController::class, 'store'])->name('store.submission');
 Route::post('/posts',       [PostController::class, 'store'])->name('store.post');
