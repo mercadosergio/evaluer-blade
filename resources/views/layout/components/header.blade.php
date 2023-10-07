@@ -41,9 +41,6 @@
                                         {{ $course->period->year }} - {{ $course->period->term }}
                                     </x-dropdown-link>
                                 @endforeach
-                                <x-dropdown-link class="flex items-center" href="#tab2">
-                                    ohla
-                                </x-dropdown-link>
                             </div>
                         </x-slot>
                     </x-dropdown>

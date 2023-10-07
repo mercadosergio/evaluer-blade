@@ -56,7 +56,7 @@
                 </li>
             </ul>
             <div class="TabsBody relative p-6 rounded-r-[4px] rounded-bl-[4px] h-full overflow-auto custom-shadow bg-white">
-                <div class="TabsPanel overflow-auto active" data-index="0">
+                <div class="TabsPanel relative overflow-x-auto active" data-index="0">
                     <table class="text-left text-gray-500">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-100">
                             <tr>
@@ -117,7 +117,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="TabsPanel overflow-auto" data-index="1">
+                <div class="TabsPanel relative overflow-x-auto" data-index="1">
                     <table class="text-left text-gray-500">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-100">
                             <tr>
@@ -169,7 +169,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="TabsPanel overflow-auto" data-index="2">
+                <div class="TabsPanel relative overflow-x-auto" data-index="2">
                     <table class="text-left text-gray-500">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-100">
                             <tr>

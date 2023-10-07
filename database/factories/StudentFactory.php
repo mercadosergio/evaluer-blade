@@ -22,6 +22,7 @@ class StudentFactory extends Factory
             'dni' => $this->faker->unique()->numerify('########'),
             'program_id' => $this->faker->numberBetween(1, 4),
             'semester' => $this->faker->numberBetween(1, 8),
+            'entered_at' => date('y'),
             'user_id' => function () {
                 return User::factory()->create(['role_id' => 1])->id;
             },

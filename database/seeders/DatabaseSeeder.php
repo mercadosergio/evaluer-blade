@@ -231,6 +231,7 @@ class DatabaseSeeder extends Seeder
             'program_id' => 1,
             'semester' => 8,
             'user_id' => 1,
+            'entered_at' => date('Y'),
         ]);
         Student::create([
             'id' => 2,
@@ -241,6 +242,7 @@ class DatabaseSeeder extends Seeder
             'program_id' => 1,
             'semester' => 8,
             'user_id' => 2,
+            'entered_at' => date('Y'),
         ]);
 
         Advisor::create([

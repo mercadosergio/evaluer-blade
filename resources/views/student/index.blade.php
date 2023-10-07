@@ -16,9 +16,6 @@
                                     {{ $course->period->term }}</a>
                             </li>
                         @endforeach
-                        <li>
-                            <a href="#tab2">Hola</a>
-                        </li>
                     </ul>
                     <!-- Tab Contents -->
                     <div id="tab-contents">
@@ -113,7 +110,6 @@
                                     @endforeach
                                 @endif
                             </div>
-                            <div id="tab2" class="tab-div p-4">TAB 2</div>
                         @endforeach
                     </div>
                 </div>
